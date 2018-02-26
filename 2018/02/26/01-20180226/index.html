@@ -27,7 +27,7 @@
 <meta property="og:url" content="https://aliennever.github.io/2018/02/26/01-20180226/index.html">
 <meta property="og:site_name" content="Alien">
 <meta property="og:description" content="weblgoic学习">
-<meta property="og:updated_time" content="2018-02-26T03:10:29.269Z">
+<meta property="og:updated_time" content="2018-02-26T03:30:32.453Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="weblogic删除域">
 <meta name="twitter:description" content="weblgoic学习">
@@ -151,13 +151,6 @@
 
 <div class="container body-wrap">
     
-    <aside class="post-widget">
-        <nav class="post-toc-wrap" id="post-toc">
-            <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#以weblogic主目录路径为：D-Oracle-Middleware，删除域名为base-domain的域为例"><span class="post-toc-number">1.</span> <span class="post-toc-text">以weblogic主目录路径为：D:\Oracle\Middleware，删除域名为base_domain的域为例</span></a></li></ol>
-        </nav>
-    </aside>
-    
 <article id="post-01-20180226"
   class="post-article article-type-post fade" itemprop="blogPost">
 
@@ -177,16 +170,16 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h2 id="以weblogic主目录路径为：D-Oracle-Middleware，删除域名为base-domain的域为例"><a href="#以weblogic主目录路径为：D-Oracle-Middleware，删除域名为base-domain的域为例" class="headerlink" title="以weblogic主目录路径为：D:\Oracle\Middleware，删除域名为base_domain的域为例"></a>以weblogic主目录路径为：D:\Oracle\Middleware，删除域名为base_domain的域为例</h2><ol>
+            <p>以weblogic主目录路径为：D:\Oracle\Middleware，删除域名为base_domain的域为例</p>
+<ol>
 <li>删除D:\Oracle\Middleware\user_projects\domains下的base_domain整个文件夹</li>
 <li>删除开始菜单中Oracle Welogic\User Projects下的base_domain整个文件夹</li>
 <li><p>删除D:\Oracle\Middleware\wlserver_10.3\common\nodemanager\nodemanager.domains里的base_domain域内容</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#Domains and directories created by Configuration Wizard</div><div class="line">#Sat Feb 24 08:48:09 CST 2018</div><div class="line">deve_domain=D\:\\Oracle\\Middleware\\user_projects\\domains\\deve_domain</div><div class="line">base_domain=D\:\\Oracle\\Middleware\\user_projects\\domains\\base_domain</div></pre></td></tr></table></figure>
 <p>删除以上base_domain一行</p>
-<ol>
-<li>删除 D:\Oracle\Middleware\domain-registry.xml 里的base_domain域内容<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</div><div class="line">&lt;domain-registry xmlns=&quot;http://xmlns.oracle.com/weblogic/domain-registry&quot;&gt;</div><div class="line">&lt;domain location=&quot;D:\Oracle\Middleware\user_projects\domains\deve_domain&quot;/&gt;</div><div class="line">&lt;domain location=&quot;D:\Oracle\Middleware\user_projects\domains\base_domain&quot;/&gt;</div><div class="line">&lt;/domain-registry&gt;</div></pre></td></tr></table></figure>
 </li>
-</ol>
+<li><p>删除 D:\Oracle\Middleware\domain-registry.xml 里的base_domain域内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</div><div class="line">&lt;domain-registry xmlns=&quot;http://xmlns.oracle.com/weblogic/domain-registry&quot;&gt;</div><div class="line">&lt;domain location=&quot;D:\Oracle\Middleware\user_projects\domains\deve_domain&quot;/&gt;</div><div class="line">&lt;domain location=&quot;D:\Oracle\Middleware\user_projects\domains\base_domain&quot;/&gt;</div><div class="line">&lt;/domain-registry&gt;</div></pre></td></tr></table></figure>
 <p>删除以上base_domain一行</p>
 </li>
 </ol>
@@ -197,7 +190,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2018-02-26T03:10:29.269Z" itemprop="dateUpdated">2018-02-26 11:10:29</time>
+    Last updated: <time datetime="2018-02-26T03:30:32.453Z" itemprop="dateUpdated">2018-02-26 11:30:32</time>
 </span><br>
 
 
