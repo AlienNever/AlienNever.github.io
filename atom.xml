@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://aliennever.github.io/"/>
-  <updated>2018-02-22T06:49:03.077Z</updated>
+  <updated>2018-02-26T03:10:29.269Z</updated>
   <id>https://aliennever.github.io/</id>
   
   <author>
@@ -16,25 +16,37 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Oracle</title>
-    <link href="https://aliennever.github.io/2018/02/22/my-first-blog/"/>
-    <id>https://aliennever.github.io/2018/02/22/my-first-blog/</id>
-    <published>2018-02-22T04:00:00.000Z</published>
-    <updated>2018-02-22T06:49:03.077Z</updated>
+    <title>weblogic删除域</title>
+    <link href="https://aliennever.github.io/2018/02/26/01-20180226/"/>
+    <id>https://aliennever.github.io/2018/02/26/01-20180226/</id>
+    <published>2018-02-26T04:00:00.000Z</published>
+    <updated>2018-02-26T03:10:29.269Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="不知道怎么办"><a href="#不知道怎么办" class="headerlink" title="不知道怎么办"></a>不知道怎么办</h2><p>![picture]<a href="http://b6.photo.store.qq.com/psu?/1e7629b6-6f7c-4b83-ba42-90345330e668/Aw*cohmlxu.l0Ok*IOi2agA4tFCWpcBwp8QZ1N*KoGE!/b/YcqlmQNkbQAAYjGVlgNebQAA&amp;bo=ngL3AQAAAAABAE0!&amp;rf=viewer_4" target="_blank" rel="external">http://b6.photo.store.qq.com/psu?/1e7629b6-6f7c-4b83-ba42-90345330e668/Aw*cohmlxu.l0Ok*IOi2agA4tFCWpcBwp8QZ1N*KoGE!/b/YcqlmQNkbQAAYjGVlgNebQAA&amp;bo=ngL3AQAAAAABAE0!&amp;rf=viewer_4</a></p>
+    <content type="html"><![CDATA[<h2 id="以weblogic主目录路径为：D-Oracle-Middleware，删除域名为base-domain的域为例"><a href="#以weblogic主目录路径为：D-Oracle-Middleware，删除域名为base-domain的域为例" class="headerlink" title="以weblogic主目录路径为：D:\Oracle\Middleware，删除域名为base_domain的域为例"></a>以weblogic主目录路径为：D:\Oracle\Middleware，删除域名为base_domain的域为例</h2><ol>
+<li>删除D:\Oracle\Middleware\user_projects\domains下的base_domain整个文件夹</li>
+<li>删除开始菜单中Oracle Welogic\User Projects下的base_domain整个文件夹</li>
+<li><p>删除D:\Oracle\Middleware\wlserver_10.3\common\nodemanager\nodemanager.domains里的base_domain域内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#Domains and directories created by Configuration Wizard</div><div class="line">#Sat Feb 24 08:48:09 CST 2018</div><div class="line">deve_domain=D\:\\Oracle\\Middleware\\user_projects\\domains\\deve_domain</div><div class="line">base_domain=D\:\\Oracle\\Middleware\\user_projects\\domains\\base_domain</div></pre></td></tr></table></figure>
+<p>删除以上base_domain一行</p>
+<ol>
+<li>删除 D:\Oracle\Middleware\domain-registry.xml 里的base_domain域内容<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</div><div class="line">&lt;domain-registry xmlns=&quot;http://xmlns.oracle.com/weblogic/domain-registry&quot;&gt;</div><div class="line">&lt;domain location=&quot;D:\Oracle\Middleware\user_projects\domains\deve_domain&quot;/&gt;</div><div class="line">&lt;domain location=&quot;D:\Oracle\Middleware\user_projects\domains\base_domain&quot;/&gt;</div><div class="line">&lt;/domain-registry&gt;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>删除以上base_domain一行</p>
+</li>
+</ol>
 ]]></content>
     
     <summary type="html">
     
-      Oracle学习
+      weblgoic学习
     
     </summary>
     
-      <category term="学习" scheme="https://aliennever.github.io/categories/%E5%AD%A6%E4%B9%A0/"/>
+      <category term="学习笔记" scheme="https://aliennever.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="学习" scheme="https://aliennever.github.io/tags/%E5%AD%A6%E4%B9%A0/"/>
+      <category term="weblogic" scheme="https://aliennever.github.io/tags/weblogic/"/>
     
   </entry>
   
