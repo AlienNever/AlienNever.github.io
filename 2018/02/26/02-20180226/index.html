@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>weblogic集群配置 | Alien | 有梦不觉人生寒,有爱不觉天涯远</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="weblogic">
+    <meta name="description" content="weblgoic学习">
+<meta name="keywords" content="weblogic">
+<meta property="og:type" content="article">
+<meta property="og:title" content="weblogic集群配置">
+<meta property="og:url" content="https://aliennever.github.io/2018/02/26/02-20180226/index.html">
+<meta property="og:site_name" content="Alien">
+<meta property="og:description" content="weblgoic学习">
+<meta property="og:updated_time" content="2018-02-28T03:17:30.256Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="weblogic集群配置">
+<meta name="twitter:description" content="weblgoic学习">
+    
+        <link rel="alternate" type="application/atom+xml" title="Alien" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/Alien.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">LG</h5>
+          <a href="mailto:76229074@qq.com" title="76229074@qq.com" class="mail">76229074@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/AlienNever" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/u/1515645385" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">weblogic集群配置</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">weblogic集群配置</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-02-26T04:00:00.000Z" itemprop="datePublished" class="page-time">
+  2018-02-26
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/学习笔记/">学习笔记</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#一、相关概念"><span class="post-toc-number">1.</span> <span class="post-toc-text">一、相关概念</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#二、单机单域集群部署实例"><span class="post-toc-number">2.</span> <span class="post-toc-text">二、单机单域集群部署实例:</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#三、双机集群部署实例："><span class="post-toc-number">3.</span> <span class="post-toc-text">三、双机集群部署实例：</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-02-20180226"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">weblogic集群配置</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-02-26 12:00:00" datetime="2018-02-26T04:00:00.000Z"  itemprop="datePublished">2018-02-26</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/学习笔记/">学习笔记</a></li></ul>
+
+
+
+            
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="一、相关概念"><a href="#一、相关概念" class="headerlink" title="一、相关概念"></a>一、相关概念</h1><hr>
+<ul>
+<li><p>服务器(Server):</p>
+<ol>
+<li>AdminServer：主要用于管理，包括应用部署，动态创建server，以及各种服务配置.所以集群环境下不会将应用、数据源等服务部署到AdminServer上面，因为AdminServer仅仅是充当管理者角色而已。运维过程中，还起到监控其它服务器状态的作用。</li>
+<li>PorxyServer：主要受理各种外部请求，做负载均衡，将具体工作交给具体的服务器。所以集群环境下，也不会将应用部署到ProxyServer上。除weblogic自带负载均衡方式外，也可用Apache\Nginx软负载或者F5硬负载等方式部署。</li>
+<li>Server: 实际处理业务请求的服务器，把前段代理服务器上接受到的任务进行实际处理，处理完了反馈给客户端。</li>
+</ol>
+<p>AdminServer只负责管理、ProxyServer负责受理分配、而普通的Server就负责处理业务请求。</p>
+</li>
+<li><p>集群(cluster):<br>控制台里面配置的集群，仅仅用于设置server之间的多播通信。server之间使用多播通信，互相告诉自己状态是否可用。</p>
+</li>
+<li><p>计算机(machine):<br>可选配置：控制台里面配置的计算机，仅仅用于配置“节点管理器”信息（地址、端口）。然后根据配置信息向节点管理器发送操作命令。</p>
+</li>
+<li><p>节点管理器(nodemanager):<br>可选服务：节点管理器在集群架构中，不是必须的。它的作用是用来管理server的生命周期，如果没有使用节点管理器，那么集群中的所有server的启动、关闭等常用的操作，必须通过运行startManagedWebLogic.cmd\stopManagedWebloigc.cmd脚本来完成(脚本路径：D:\Oracle\Middleware\user_projects\domains\base_domain\bin)。例如启动server1:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">startManagedWebLogic server1 127.0.0.1:7001</div><div class="line">server1 启动的受管服务器的名称   </div><div class="line">address 该域的管理服务器的IP地址   </div><div class="line">port    该域的管理服务器的监听端口</div></pre></td></tr></table></figure>
+<p>所以有些集群环境下，你能看到有多少个server，就有多少个启动脚本，实际上就是执行上面这个命令。如果集群中的server分布在多台主机上面，那每次启动服务非常不方便，所以这时候，节点管理器就派上用场了，节点管理器负责管理本机server的启动、关闭等生命周期。</p>
+</li>
+</ul>
+<hr>
+<h1 id="二、单机单域集群部署实例"><a href="#二、单机单域集群部署实例" class="headerlink" title="二、单机单域集群部署实例:"></a>二、单机单域集群部署实例:</h1><hr>
+<ul>
+<li>部署规划：<br>| 运行Server |主机Ip | 访问port |<br>| - | - | - |<br>| AdminServer | 172.16.92.41 | 7001 |<br>| PorxyServer | 172.16.92.41 | 17000 |<br>| Server1 | 172.16.92.41 | 17001 |<br>| Server2 | 172.16.92.41 | 17002 |<br>其中AdminServer是总控制端，ProxyServer为负载分发代理服务器，server1、server2是集群中的两个服务节点。</li>
+<li>创建服务器\集群\计算机:<ol>
+<li>登录weblogic控制台:<br>通过域目录下startWebLogic脚本启动weblogic服务，浏览器localhost:7001/console进入weblogic控制台。</li>
+<li>建立服务器(Sever):<br>域结构&gt;环境&gt;服务器：分别输入ip\port建立Server1\Server2\PorxyServer</li>
+<li>建立集群(cluster)<br>域结构&gt;环境&gt;集群：建立Cluster1，消息传送模式选多点传送，传送地址和端口默认。建好后点击Cluster1超链接&gt;服务器选项卡将Sever1\Sever2加入到集群中。</li>
+<li>建立计算机(machine):<br>域结构&gt;环境&gt;计算机：建立Machine1,默认配置，建好后点击Machine1超链接&gt;服务器选项卡将Sever1\Sever2\PorxyServer加入到集群中。</li>
+</ol>
+</li>
+<li><p>部署服务：<br>域结构&gt;部署：分别选择相应的项目路径部署Proxy项目和MyProject项目，MyProject项目为自建测试项目(若有数据源需要在域结构&gt;服务&gt;数据源中配置数据源)，Proxy项目为weblogic自带负载分发项目，只在WEB-INF目录下包含web.xml和weblogic.xml，相应代码如下：</p>
+<ul>
+<li><p>web.xml</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</div><div class="line">&lt;web-app xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</div><div class="line">  xmlns=&quot;http://java.sun.com/xml/ns/javaee&quot;</div><div class="line">  xsi:schemaLocation=&quot;http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd&quot;</div><div class="line">  id=&quot;WebApp_ID&quot; version=&quot;2.5&quot;&gt;</div><div class="line">  &lt;display-name&gt;WeblogicProxy&lt;/display-name&gt;</div><div class="line">  &lt;!-- 配置web的servlet，拦截所有的请求，proxy内部会检测server的状态、负载情况，然后根据算法再将请求转发给具体的server处理 --&gt;</div><div class="line">  &lt;servlet&gt;</div><div class="line">    &lt;servlet-name&gt;HttpClusterServlet&lt;/servlet-name&gt;</div><div class="line">    &lt;servlet-class&gt;weblogic.servlet.proxy.HttpClusterServlet&lt;/servlet-class&gt;</div><div class="line">    &lt;init-param&gt;</div><div class="line">      &lt;param-name&gt;WebLogicCluster&lt;/param-name&gt;</div><div class="line">      &lt;param-value&gt;172.16.92.41:17001|172.16.92.41:17002&lt;/param-value&gt;</div><div class="line">    &lt;/init-param&gt;</div><div class="line">    &lt;init-param&gt;</div><div class="line">      &lt;param-name&gt;DebugConfigInfo&lt;/param-name&gt;</div><div class="line">      &lt;param-value&gt;ON&lt;/param-value&gt;</div><div class="line">    &lt;/init-param&gt;</div><div class="line">    &lt;init-param&gt;</div><div class="line">      &lt;param-name&gt;verbose&lt;/param-name&gt;</div><div class="line">      &lt;param-value&gt;true&lt;/param-value&gt;</div><div class="line">    &lt;/init-param&gt;</div><div class="line">  &lt;/servlet&gt;</div><div class="line"></div><div class="line">  &lt;servlet-mapping&gt;</div><div class="line">    &lt;servlet-name&gt;HttpClusterServlet&lt;/servlet-name&gt;</div><div class="line">    &lt;url-pattern&gt;/&lt;/url-pattern&gt;</div><div class="line">  &lt;/servlet-mapping&gt;</div><div class="line">  &lt;servlet-mapping&gt;</div><div class="line">    &lt;servlet-name&gt;HttpClusterServlet&lt;/servlet-name&gt;</div><div class="line">    &lt;url-pattern&gt;*.jsp&lt;/url-pattern&gt;</div><div class="line">  &lt;/servlet-mapping&gt;</div><div class="line">  &lt;servlet-mapping&gt;</div><div class="line">    &lt;servlet-name&gt;HttpClusterServlet&lt;/servlet-name&gt;</div><div class="line">    &lt;url-pattern&gt;*.jspx&lt;/url-pattern&gt;</div><div class="line">  &lt;/servlet-mapping&gt;</div><div class="line">  &lt;servlet-mapping&gt;</div><div class="line">    &lt;servlet-name&gt;HttpClusterServlet&lt;/servlet-name&gt;</div><div class="line">    &lt;url-pattern&gt;*.htm&lt;/url-pattern&gt;</div><div class="line">  &lt;/servlet-mapping&gt;</div><div class="line">  &lt;servlet-mapping&gt;</div><div class="line">    &lt;servlet-name&gt;HttpClusterServlet&lt;/servlet-name&gt;</div><div class="line">    &lt;url-pattern&gt;*.html&lt;/url-pattern&gt;</div><div class="line">  &lt;/servlet-mapping&gt;</div><div class="line">  &lt;servlet-mapping&gt;</div><div class="line">    &lt;servlet-name&gt;HttpClusterServlet&lt;/servlet-name&gt;</div><div class="line">    &lt;url-pattern&gt;*.jpd&lt;/url-pattern&gt;</div><div class="line">  &lt;/servlet-mapping&gt;</div><div class="line">  &lt;servlet-mapping&gt;</div><div class="line">    &lt;servlet-name&gt;HttpClusterServlet&lt;/servlet-name&gt;</div><div class="line">    &lt;url-pattern&gt;*.jcx&lt;/url-pattern&gt;</div><div class="line">  &lt;/servlet-mapping&gt;</div><div class="line">  &lt;servlet-mapping&gt;</div><div class="line">    &lt;servlet-name&gt;HttpClusterServlet&lt;/servlet-name&gt;</div><div class="line">    &lt;url-pattern&gt;*.dtf&lt;/url-pattern&gt;</div><div class="line">  &lt;/servlet-mapping&gt;</div><div class="line">  &lt;servlet-mapping&gt;</div><div class="line">    &lt;servlet-name&gt;HttpClusterServlet&lt;/servlet-name&gt;</div><div class="line">    &lt;url-pattern&gt;*.jws&lt;/url-pattern&gt;</div><div class="line">  &lt;/servlet-mapping&gt;</div><div class="line">&lt;/web-app&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>weblogic.xml</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</div><div class="line">&lt;wls:weblogic-web-app xmlns:wls=&quot;http://xmlns.oracle.com/weblogic/weblogic-web-app&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd http://xmlns.oracle.com/weblogic/weblogic-web-app http://xmlns.oracle.com/weblogic/weblogic-web-app/1.3/weblogic-web-app.xsd&quot;&gt;</div><div class="line">    &lt;wls:weblogic-version&gt;10.3.6&lt;/wls:weblogic-version&gt;</div><div class="line">    &lt;wls:context-root&gt;/&lt;/wls:context-root&gt;</div><div class="line">&lt;/wls:weblogic-web-app&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>启动服务器节点</p>
+<ol>
+<li>修改D:\Oracle\Middleware\wlserver_10.3\common\nodemanager目录下nodemanager.properties 字段，将默认的ListenAddress=localhost</li>
+<li>D:\Oracle\Middleware\wlserver_10.3\server\bin目录下的脚本installNodeMgrSvc.cmd，然后在计算机&gt;管理&gt;服务启动Oracle WebLogic NodeManager (D_Oracle_Middleware_wlserver_10.3)服务</li>
+<li>进入weblogic控制台界面，选择服务器&gt;控制选项卡，勾选对应的托管服务器，就可以进行启动关闭等操作。</li>
+</ol>
+</li>
+</ul>
+<hr>
+<h1 id="三、双机集群部署实例："><a href="#三、双机集群部署实例：" class="headerlink" title="三、双机集群部署实例："></a>三、双机集群部署实例：</h1><hr>
+<ul>
+<li>前期注意：<ol>
+<li>集群中的所有Server必须位于同一网段，并且必须是IP广播(UDP)可到达的;</li>
+<li>集群中的所有Server必须使用相同的版本,包括 Service Pack;</li>
+<li>集群中的Server必须使用永久的静态IP地址。动态IP 地址分配不能用于集群环境。如果服务器位于防火墙后面，而客户机位于防火墙外面，那么服务器必须有公共的静态IP地址，只有这样，客户端才能访问服务器;</li>
+</ol>
+</li>
+<li>部署规划：<br>| 运行Server |主机Ip | 访问port |<br>| - | - | - |<br>| AdminServer | 172.16.92.41 | 7001 |<br>| ProxyServer | 172.16.92.41 | 17000 |<br>| Server1 | 172.16.92.41 | 17001 |<br>| Server2 | 172.16.92.42 | 17001 |</li>
+<li>创建域：<ul>
+<li>172.16.92.41:<br>1.启动weblogic配置向导，创建weblogic域，选择可选配置选项卡选择’管理服务器’和’受管理服务器，集群和计算机’两个选项，依照上述规划进行建立。</li>
+</ul>
+<ol>
+<li>启动weblogic控制台，登录管理服务，安装部署应用及代理服务.配置Jndi数据源。<br>以上步骤注意地址一定输入准确的IP地址不要使用localhost！<br>管理服务AdminServer监听地址为空(0.0.0.0)！<br>若本机有虚拟网卡需要禁用！</li>
+</ol>
+<ul>
+<li>172.16.92.42：<br>启动weblogic配置向导，创建weblogic域，选择可选配置选项卡选择’管理服务器’和’受管理服务器，集群和计算机’两个选项，管理服务器IP选择172.16.92.41，服务器名建立要与172.16.92.41上建立的相匹配(即Server2)，集群和计算机不用配置。</li>
+</ul>
+</li>
+<li>部署服务：<br>分别选择相应的项目路径部署Proxy项目和MyProject项目，程序中调用Jndi时也需要使用准确的IP地址！</li>
+</ul>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2018-02-28T03:17:30.256Z" itemprop="dateUpdated">2018-02-28 11:17:30</time>
+</span><br>
+
+
+        
+    </div>
+    <footer>
+        <a href="https://aliennever.github.io">
+            <img src="/img/Alien.jpg" alt="LG">
+            LG
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/weblogic/">weblogic</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://aliennever.github.io/2018/02/26/02-20180226/&title=《weblogic集群配置》 — Alien&pic=https://aliennever.github.io/img/Alien.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://aliennever.github.io/2018/02/26/02-20180226/&title=《weblogic集群配置》 — Alien&source=终有一天，大器晚成" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://aliennever.github.io/2018/02/26/02-20180226/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《weblogic集群配置》 — Alien&url=https://aliennever.github.io/2018/02/26/02-20180226/&via=https://aliennever.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://aliennever.github.io/2018/02/26/02-20180226/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/02/26/01-20180226/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">weblogic删除域</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://aliennever.github.io/2018/02/26/02-20180226/&title=《weblogic集群配置》 — Alien&pic=https://aliennever.github.io/img/Alien.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://aliennever.github.io/2018/02/26/02-20180226/&title=《weblogic集群配置》 — Alien&source=终有一天，大器晚成" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://aliennever.github.io/2018/02/26/02-20180226/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《weblogic集群配置》 — Alien&url=https://aliennever.github.io/2018/02/26/02-20180226/&via=https://aliennever.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://aliennever.github.io/2018/02/26/02-20180226/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACMklEQVR42u3a247CMAxFUf7/pzuvSKhhHzuDVGfnCTEtzQLJ40teL7yut/X5zvv76+vvPvnurs1LhgwZj2Vcy7V+AH9kDUz2JkOGjHMYJBSuX5OgyTfN9yZDhgwZ6+12NkfCugwZMmT0GWlC+SW9A8+VIUPGyQyyofVdnSt/WovLkCHjgQzeLPv963+Zb8iQIeNRjCtcu8YJ6yQv3pUMGTJGM3iA42lZmvDVAq4MGTLOYfDWWK2hX2OTIx23v4MMGTLGMfiBCfIAfg1vxvGQLUOGjNMYtaZ88EicepK9yZAhYzaDhFpSWPKm2FVa8e8gQ4aMcYzghsbosXYluleGDBmjGShz3BR2yVfDRwJf9iNDhozRDLKttPgsTlZL7T8ZMmTMY/TbZ52hZpogoiJWhgwZoxlpEcvHjek7abNPhgwZJzCCgrBUdvJDFcUDZDJkyBjNqCWCtbHBrq/jSyCWIUPGOEYnHayF1PRZ6K8yZMgYzSAl6C5YUJTiwUBwkQwZMkYw+EiSB8d0kJDu4fY0rgwZMoYyeCrGA2jnKEb8b0CGDBkHMNJxYzpP5AG39vkyZMiYyrjCxceKPKXjQ81bqgwZMkYzag0vnur1D5ClTUAZMmRMZdTaYWmZyovYtIUnQ4aMcxhB1YtTw9oAIA39MmTIkMHDYq3FTz4fFbEyZMiQUUoN08Nk6Ri1FXBlyJDxQAZJ6fi20vBaa+rJkCHjHEZ6xCHdUL/pv22oKUOGjOcx/gCc5YmHpNXKkwAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
