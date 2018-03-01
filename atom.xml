@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://aliennever.github.io/"/>
-  <updated>2018-02-26T03:30:32.453Z</updated>
+  <updated>2018-03-01T00:47:14.778Z</updated>
   <id>https://aliennever.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://aliennever.github.io/2018/02/26/01-20180226/"/>
     <id>https://aliennever.github.io/2018/02/26/01-20180226/</id>
     <published>2018-02-26T04:00:00.000Z</published>
-    <updated>2018-02-26T03:30:32.453Z</updated>
+    <updated>2018-03-01T00:47:14.778Z</updated>
     
     <content type="html"><![CDATA[<p>以weblogic主目录路径为：D:\Oracle\Middleware，删除域名为base_domain的域为例</p>
 <ol>
@@ -35,6 +35,7 @@
 <p>删除以上base_domain一行</p>
 </li>
 </ol>
+<p>附一个删除脚本：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">import os</div><div class="line">import shutil</div><div class="line">import re</div><div class="line">def deleteDomain(domainName):</div><div class="line">	domainPath=r&apos;D:\Oracle\Middleware\user_projects\domains&apos;</div><div class="line">	startMenuPath=r&apos;C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Oracle WebLogic\User Projects&apos;</div><div class="line">	nodemanagerPath=r&apos;D:\Oracle\Middleware\wlserver_10.3\common\nodemanager\nodemanager.domains&apos;</div><div class="line">	nodemanagerPathNew=r&apos;D:\Oracle\Middleware\wlserver_10.3\common\nodemanager\nodemanagertemp.domains&apos;</div><div class="line">	domainRegistryPath=r&apos;D:\Oracle\Middleware\domain-registry.xml&apos;</div><div class="line">	domainRegistryPathNew=r&apos;D:\Oracle\Middleware\domain-registrytemp.xml&apos;</div><div class="line">    </div><div class="line">	if domainName.strip()!=&apos;&apos;:</div><div class="line">		try:</div><div class="line">			deleteDomainPath=os.path.join(domainPath,domainName)</div><div class="line">			deleteStartMenuPath=os.path.join(startMenuPath,domainName)</div><div class="line">			if os.path.isdir(deleteDomainPath):</div><div class="line">				shutil.rmtree(deleteDomainPath)</div><div class="line">				print (&quot;删除域目录成功！&quot;)</div><div class="line">			else:</div><div class="line">				print (&quot;域目录不存在！&quot;)</div><div class="line">			if os.path.isdir(deleteStartMenuPath):</div><div class="line">				shutil.rmtree(deleteStartMenuPath)</div><div class="line">				print (&quot;删除域开始菜单成功！&quot;)</div><div class="line">			else:</div><div class="line">				print (&quot;域开始菜单目录不存在！&quot;)		</div><div class="line">			with open(nodemanagerPath, &apos;r&apos;) as f:</div><div class="line">				with open(nodemanagerPathNew, &apos;w&apos;) as g:</div><div class="line">					for line in f.readlines():</div><div class="line">						if not re.match(domainName,line):</div><div class="line">							g.write(line)</div><div class="line">			os.remove(nodemanagerPath)</div><div class="line">			os.rename(nodemanagerPathNew,nodemanagerPath)</div><div class="line">			with open(domainRegistryPath, &apos;r&apos;) as f:</div><div class="line">				with open(domainRegistryPathNew, &apos;w&apos;) as g:</div><div class="line">					for line in f.readlines():</div><div class="line">						if not re.search(domainName,line):</div><div class="line">							g.write(line)</div><div class="line">			os.remove(domainRegistryPath)</div><div class="line">			os.rename(domainRegistryPathNew,domainRegistryPath)</div><div class="line">		except Exception as err:</div><div class="line">			print (&quot;删除域失败：&#123;0&#125;&quot;.format(err))    </div><div class="line">	else:</div><div class="line">		print (&quot;域名输入有误！&quot;)</div></pre></td></tr></table></figure></p>
 ]]></content>
     
     <summary type="html">
@@ -55,7 +56,7 @@
     <link href="https://aliennever.github.io/2018/02/26/02-20180226/"/>
     <id>https://aliennever.github.io/2018/02/26/02-20180226/</id>
     <published>2018-02-26T04:00:00.000Z</published>
-    <updated>2018-02-28T03:28:54.929Z</updated>
+    <updated>2018-03-01T00:45:24.983Z</updated>
     
     <content type="html"><![CDATA[<h1 id="一、相关概念"><a href="#一、相关概念" class="headerlink" title="一、相关概念"></a>一、相关概念</h1><hr>
 <ul>
@@ -187,7 +188,7 @@
 </ul>
 <ol>
 <li>启动weblogic配置向导，创建weblogic域，选择可选配置选项卡选择’管理服务器’和’受管理服务器，集群和计算机’两个选项，依照上述规划进行建立。</li>
-<li>启动weblogic控制台，登录管理服务，安装部署应用及代理服务.配置Jndi数据源。<br>以上步骤注意地址一定输入准确的IP地址不要使用localhost！<br>管理服务AdminServer监听地址为空(0.0.0.0)！<br>若本机有虚拟网卡需要禁用！</li>
+<li>启动weblogic控制台，登录管理服务，安装部署应用及代理服务.配置Jndi数据源。<br>以上步骤注意地址一定输入准确的IP地址不要使用localhost！<br>管理服务AdminServer监听地址为空！<br>若本机有虚拟网卡需要禁用！</li>
 </ol>
 <ul>
 <li>172.16.92.42：<br>启动weblogic配置向导，创建weblogic域，选择可选配置选项卡选择’管理服务器’和’受管理服务器，集群和计算机’两个选项，管理服务器IP选择172.16.92.41服务器名建立要与172.16.92.41上建立的相匹配(即Server2)，集群和计算机不用配置。</li>

@@ -27,7 +27,7 @@
 <meta property="og:url" content="https://aliennever.github.io/2018/02/26/01-20180226/index.html">
 <meta property="og:site_name" content="Alien">
 <meta property="og:description" content="weblgoic学习">
-<meta property="og:updated_time" content="2018-02-26T03:30:32.453Z">
+<meta property="og:updated_time" content="2018-03-01T00:47:14.778Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="weblogic删除域">
 <meta name="twitter:description" content="weblgoic学习">
@@ -113,7 +113,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -183,6 +183,7 @@
 <p>删除以上base_domain一行</p>
 </li>
 </ol>
+<p>附一个删除脚本：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">import os</div><div class="line">import shutil</div><div class="line">import re</div><div class="line">def deleteDomain(domainName):</div><div class="line">	domainPath=r&apos;D:\Oracle\Middleware\user_projects\domains&apos;</div><div class="line">	startMenuPath=r&apos;C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Oracle WebLogic\User Projects&apos;</div><div class="line">	nodemanagerPath=r&apos;D:\Oracle\Middleware\wlserver_10.3\common\nodemanager\nodemanager.domains&apos;</div><div class="line">	nodemanagerPathNew=r&apos;D:\Oracle\Middleware\wlserver_10.3\common\nodemanager\nodemanagertemp.domains&apos;</div><div class="line">	domainRegistryPath=r&apos;D:\Oracle\Middleware\domain-registry.xml&apos;</div><div class="line">	domainRegistryPathNew=r&apos;D:\Oracle\Middleware\domain-registrytemp.xml&apos;</div><div class="line">    </div><div class="line">	if domainName.strip()!=&apos;&apos;:</div><div class="line">		try:</div><div class="line">			deleteDomainPath=os.path.join(domainPath,domainName)</div><div class="line">			deleteStartMenuPath=os.path.join(startMenuPath,domainName)</div><div class="line">			if os.path.isdir(deleteDomainPath):</div><div class="line">				shutil.rmtree(deleteDomainPath)</div><div class="line">				print (&quot;删除域目录成功！&quot;)</div><div class="line">			else:</div><div class="line">				print (&quot;域目录不存在！&quot;)</div><div class="line">			if os.path.isdir(deleteStartMenuPath):</div><div class="line">				shutil.rmtree(deleteStartMenuPath)</div><div class="line">				print (&quot;删除域开始菜单成功！&quot;)</div><div class="line">			else:</div><div class="line">				print (&quot;域开始菜单目录不存在！&quot;)		</div><div class="line">			with open(nodemanagerPath, &apos;r&apos;) as f:</div><div class="line">				with open(nodemanagerPathNew, &apos;w&apos;) as g:</div><div class="line">					for line in f.readlines():</div><div class="line">						if not re.match(domainName,line):</div><div class="line">							g.write(line)</div><div class="line">			os.remove(nodemanagerPath)</div><div class="line">			os.rename(nodemanagerPathNew,nodemanagerPath)</div><div class="line">			with open(domainRegistryPath, &apos;r&apos;) as f:</div><div class="line">				with open(domainRegistryPathNew, &apos;w&apos;) as g:</div><div class="line">					for line in f.readlines():</div><div class="line">						if not re.search(domainName,line):</div><div class="line">							g.write(line)</div><div class="line">			os.remove(domainRegistryPath)</div><div class="line">			os.rename(domainRegistryPathNew,domainRegistryPath)</div><div class="line">		except Exception as err:</div><div class="line">			print (&quot;删除域失败：&#123;0&#125;&quot;.format(err))    </div><div class="line">	else:</div><div class="line">		print (&quot;域名输入有误！&quot;)</div></pre></td></tr></table></figure></p>
 
         </div>
 
@@ -190,7 +191,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2018-02-26T03:30:32.453Z" itemprop="dateUpdated">2018-02-26 11:30:32</time>
+    最后更新时间：<time datetime="2018-03-01T00:47:14.778Z" itemprop="dateUpdated">2018-03-01 08:47:14</time>
 </span><br>
 
 
