@@ -28,7 +28,7 @@
 <meta property="og:site_name" content="Alien">
 <meta property="og:description" content="Linux学习">
 <meta property="og:image" content="http://wx4.sinaimg.cn/mw690/5a56e9c9ly1foxb7ijnx6j20m80gljsw.jpg">
-<meta property="og:updated_time" content="2018-03-01T07:17:30.581Z">
+<meta property="og:updated_time" content="2018-03-01T07:33:16.921Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux虚拟机安装">
 <meta name="twitter:description" content="Linux学习">
@@ -115,7 +115,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -156,7 +156,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#系统安装："><span class="post-toc-number">1.</span> <span class="post-toc-text">系统安装：</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#系统安装："><span class="post-toc-number">1.</span> <span class="post-toc-text">系统安装：</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#安装桌面环境："><span class="post-toc-number">2.</span> <span class="post-toc-text">安装桌面环境：</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#安装VMware-tools"><span class="post-toc-number">3.</span> <span class="post-toc-text">安装VMware tools:</span></a></li></ol>
         </nav>
     </aside>
     
@@ -181,13 +181,13 @@
         <div class="post-content" id="post-content" itemprop="postContent">
             <h1 id="系统安装："><a href="#系统安装：" class="headerlink" title="系统安装："></a>系统安装：</h1><hr>
 <ul>
-<li><p>最小化安装：</p>
-<ol>
+<li>最小化安装：<ol>
 <li>打开VMware，新建虚拟机&gt;典型配置&gt;稍后安装操作系统&gt;Linux&gt;选择存储文件夹&gt;设置虚拟机磁盘容量&gt;完成</li>
 <li>CD/DVD选择Linux系统镜像文件&gt;开启虚拟机&gt;Install Linux&gt;安装语言选择简体中文&gt;设定时间、配置分区(规划可以如下图)、配置网络&gt;网络和主机名选择连接&gt;设置root用户密码<br><img src="http://wx4.sinaimg.cn/mw690/5a56e9c9ly1foxb7ijnx6j20m80gljsw.jpg" alt="系统分区"></li>
 </ol>
 </li>
-<li><p>安装桌面环境：</p>
+</ul>
+<h1 id="安装桌面环境："><a href="#安装桌面环境：" class="headerlink" title="安装桌面环境："></a>安装桌面环境：</h1><hr>
 <ol>
 <li>打开VMware,在CD/DVD设置选项中，将Redhat7镜像文件放入CD/DVD中</li>
 <li><p>root用户下将虚拟光驱挂载到 /mnt 文件夹下 （确保虚拟光驱处于链接状态）</p>
@@ -207,8 +207,7 @@
 </ul>
 </li>
 </ol>
-</li>
-<li><p>安装VMware tools:</p>
+<h1 id="安装VMware-tools"><a href="#安装VMware-tools" class="headerlink" title="安装VMware tools:"></a>安装VMware tools:</h1><hr>
 <ol>
 <li>虚拟机 &gt;&gt;客户机 &gt;&gt; 安装/升级 VMware Tools</li>
 <li><p>挂载解压资源</p>
@@ -217,8 +216,6 @@
 <li><p>安装并卸载CD-ROM</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[root@localhost tmp]# cd vmware-tools-distrib/</div><div class="line">[root@localhost vmware-tools-distrib]# ./vmware-install.pl</div><div class="line">[root@localhost vmware-tools-distrib]# cd /</div><div class="line">[root@localhost /]# umount /media</div></pre></td></tr></table></figure></li>
 </ol>
-</li>
-</ul>
 
         </div>
 
@@ -226,7 +223,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2018-03-01T07:17:30.581Z" itemprop="dateUpdated">2018-03-01 15:17:30</time>
+    Last updated: <time datetime="2018-03-01T07:33:16.921Z" itemprop="dateUpdated">2018-03-01 15:33:16</time>
 </span><br>
 
 
