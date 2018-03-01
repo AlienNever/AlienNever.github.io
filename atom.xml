@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://aliennever.github.io/"/>
-  <updated>2018-03-01T00:47:14.778Z</updated>
+  <updated>2018-03-01T07:17:30.581Z</updated>
   <id>https://aliennever.github.io/</id>
   
   <author>
@@ -14,6 +14,68 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Linux虚拟机安装</title>
+    <link href="https://aliennever.github.io/2018/03/01/03-20180301/"/>
+    <id>https://aliennever.github.io/2018/03/01/03-20180301/</id>
+    <published>2018-03-01T04:00:00.000Z</published>
+    <updated>2018-03-01T07:17:30.581Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="系统安装："><a href="#系统安装：" class="headerlink" title="系统安装："></a>系统安装：</h1><hr>
+<ul>
+<li><p>最小化安装：</p>
+<ol>
+<li>打开VMware，新建虚拟机&gt;典型配置&gt;稍后安装操作系统&gt;Linux&gt;选择存储文件夹&gt;设置虚拟机磁盘容量&gt;完成</li>
+<li>CD/DVD选择Linux系统镜像文件&gt;开启虚拟机&gt;Install Linux&gt;安装语言选择简体中文&gt;设定时间、配置分区(规划可以如下图)、配置网络&gt;网络和主机名选择连接&gt;设置root用户密码<br><img src="http://wx4.sinaimg.cn/mw690/5a56e9c9ly1foxb7ijnx6j20m80gljsw.jpg" alt="系统分区"></li>
+</ol>
+</li>
+<li><p>安装桌面环境：</p>
+<ol>
+<li>打开VMware,在CD/DVD设置选项中，将Redhat7镜像文件放入CD/DVD中</li>
+<li><p>root用户下将虚拟光驱挂载到 /mnt 文件夹下 （确保虚拟光驱处于链接状态）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]# mount /dev/sr0 /mnt</div><div class="line">mount: /dev/sr0 is write-protected, mounting read-only</div></pre></td></tr></table></figure>
+</li>
+<li><p>配置光盘为本地yum源</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]# vi /etc/yum.repos.d/local.repo</div><div class="line">[local]</div><div class="line">name=local</div><div class="line">baseurl=file:///mnt</div><div class="line">enabled=1</div><div class="line">gpgcheck=0</div></pre></td></tr></table></figure>
+</li>
+<li><p>查看组yum包\安装桌面环境组件\切换到图形化界面</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]# yum grouplist</div><div class="line">[root@localhost ~]# yum groupinstall -y &quot;Server with GUI&quot;</div><div class="line">[root@localhost ~]# startx</div></pre></td></tr></table></figure>
+</li>
+<li><p>默认启动模式查看与切换</p>
+<ul>
+<li>查看当前启动模式： <code>systemctl get-default</code></li>
+<li>桌面启动：<code>systemctl set-default graphical.target</code></li>
+<li>命令行启动：<code>systemctl set-default multi-user.target</code></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>安装VMware tools:</p>
+<ol>
+<li>虚拟机 &gt;&gt;客户机 &gt;&gt; 安装/升级 VMware Tools</li>
+<li><p>挂载解压资源</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">[root@localhost /]# cd /media/</div><div class="line">[root@localhost media]# mount /dev/cdrom /media</div><div class="line">  mount: /dev/sr0 is write-protected, mounting read-only</div><div class="line">[root@localhost media]# cp VMwareTools-10.0.10-4301679.tar.gz /tmp</div><div class="line">[root@localhost media]# cd /tmp</div><div class="line">[root@localhost tmp]# chmod +x VMwareTools-10.0.10-4301679.tar.gz</div><div class="line">[root@localhost tmp]# tar zxf VMwareTools-10.0.10-4301679.tar.gz</div></pre></td></tr></table></figure>
+</li>
+<li><p>安装并卸载CD-ROM</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[root@localhost tmp]# cd vmware-tools-distrib/</div><div class="line">[root@localhost vmware-tools-distrib]# ./vmware-install.pl</div><div class="line">[root@localhost vmware-tools-distrib]# cd /</div><div class="line">[root@localhost /]# umount /media</div></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      Linux学习
+    
+    </summary>
+    
+      <category term="学习笔记" scheme="https://aliennever.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="Linux" scheme="https://aliennever.github.io/tags/Linux/"/>
+    
+  </entry>
   
   <entry>
     <title>weblogic删除域</title>
