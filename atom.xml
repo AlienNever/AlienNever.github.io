@@ -44,6 +44,85 @@
   </entry>
   
   <entry>
+    <title>Oracle11g最小静默安装</title>
+    <link href="https://aliennever.github.io/2018/03/05/05-20180305/"/>
+    <id>https://aliennever.github.io/2018/03/05/05-20180305/</id>
+    <published>2018-03-05T04:00:00.000Z</published>
+    <updated>2018-03-09T09:07:34.934Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h1><hr>
+<ol>
+<li>软件环境：<ul>
+<li>VM虚拟机：redhat Linux </li>
+<li>oracle11g安装包</li>
+<li>单机环境需要准备所需依赖包packages</li>
+</ul>
+</li>
+<li><p>单机环境安装net-tools和unzip：</p>
+<ul>
+<li><p>配置本地yum源</p>
+<ol>
+<li>打开VMware,在CD/DVD设置选项中，将Redhat7镜像文件放入CD/DVD中</li>
+<li><p>将虚拟光驱挂载到 /mnt 文件夹下 （确保虚拟光驱处于链接状态）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mount /dev/sr0 /mnt</div><div class="line">mount: /dev/sr0 is write-protected, mounting read-only</div></pre></td></tr></table></figure>
+</li>
+<li><p>/mnt/Packages下安装net-tools和unzip包 <code>rpm -ivh net-tools</code></p>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>若修改主机名则在在/etc/hosts文件中添加主机名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">vi /etc/sysconfig/network</div><div class="line">HOSTNAME=Alien</div><div class="line">vi /etc/hosts</div><div class="line">127.0.0.1      localhost.localdomain localhost linuxhostname Alien</div></pre></td></tr></table></figure>
+</li>
+<li><p>修改内核参数文件/etc/sysctl.conf:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">fs.aio-max-nr = 1048576</div><div class="line">fs.file-max = 6815744</div><div class="line">kernel.shmall = 2097152</div><div class="line">kernel.shmmax = 536870912</div><div class="line">kernel.shmmni = 4096</div><div class="line">kernel.sem = 250 32000 100 128</div><div class="line">net.ipv4.ip_local_port_range = 9000 65500</div><div class="line">net.core.rmem_default = 262144</div><div class="line">net.core.rmem_max = 4194304</div><div class="line">net.core.wmem_default = 262144</div><div class="line">net.core.wmem_max = 1048586</div></pre></td></tr></table></figure>
+</li>
+<li><p>修改用户的限制文件/etc/security/limits.conf:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">oracle    soft    nproc    2047</div><div class="line">oracle    hard    nproc    16384</div><div class="line">oracle    soft    nofile    1024</div><div class="line">oracle    hard    nofile    65536</div><div class="line">oracle    soft    stack    10240</div></pre></td></tr></table></figure>
+</li>
+<li><p>单机环境通过FTP工具上传并安装依赖包packages <code>rpm -Uvh * --nodeps</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum -y install binutils compat-libcap1 compat-libstdc++-33  elfutils-libelf elfutils-libelf-devel gcc gcc-c++ glibc glibc-common glibc-devel glibc-headers ksh libaio libaio-devel libgcc libstdc++ libstdc++-devel libXi libXtst make sysstat unixODBC unixODBC-devel</div></pre></td></tr></table></figure>
+</li>
+<li><p>创建Oracle用户和相应的属组</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">groupadd oinstall</div><div class="line">groupadd dba</div><div class="line">useradd -g oinstall -G dba oracle</div><div class="line">passwd oracle</div></pre></td></tr></table></figure>
+</li>
+<li><p>切换到oracle用户创建目录修改属组和权限</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">    mkdir -p /home/oracle/oracle11g/base         #基目录</div><div class="line">    mkdir -p /home/oracle/oracle11g/base/home    #家目录</div><div class="line">    mkdir -p /home/oracle/oracle11g/oraInventory    #清单目录</div><div class="line">```	</div><div class="line">9. 配置oracle用户的环境变量，编辑  ~/.bash_profile：</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>export ORACLE_BASE=/home/oracle/oracle11g/base<br>export ORACLE_HOME=$ORACLE_BASE/home<br>export ORACLE_SID=orcl<br>export PATH=$ORACLE_HOME/bin:$PATH:$HOME/bin<br>export TNS_ADMIN=$ORACLE_HOME/network/admin<br>export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ORACLE_HOME/lib<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">10. 上传oracle11g安装包并解压</div></pre></td></tr></table></figure></p>
+<pre><code>unzip p13390677_112040_Linux-x86-64_1of7.zip 
+unzip p13390677_112040_Linux-x86-64_2of7.zip
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">---</div><div class="line"></div><div class="line"># 安装数据库</div><div class="line">---</div><div class="line">1. 修改静默安装响应文件/home/oracle/database/response/db_install.rsp:</div></pre></td></tr></table></figure>
+<p>  oracle.install.option=INSTALL_DB_SWONLY<br>  ORACLE_HOSTNAME=Alien<br>  UNIX_GROUP_NAME=oinstall<br>  INVENTORY_LOCATION=/home/oracle/oracle11g/oraInventory<br>  SELECTED_LANGUAGES=en,zh_CN<br>  ORACLE_HOME=/home/oracle/oracle11g/base/home<br>  ORACLE_BASE=/home/oracle/oracle11g/base<br>  oracle.install.db.InstallEdition=EE<br>  oracle.install.db.isCustomInstall=false<br>  oracle.install.db.DBA_GROUP=dba<br>  oracle.install.db.OPER_GROUP=oinstall<br>  SECURITY_UPDATES_VIA_MYORACLESUPPORT=false<br>  DECLINE_SECURITY_UPDATES=true<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">2. 启动静默安装程序</div><div class="line">  `./runInstaller -silent -ignorePrereq -responseFile /home/oracle/database/response/db_install.rsp`</div><div class="line">3. 修改静默创建数据库文件/home/oracle/database/response/dbca.rsp:</div><div class="line">4. 静默创建数据库:</div><div class="line">  `./dbca -silent -responseFile /home/oracle/database/response/dbca.rsp`</div><div class="line">  建库后实例检查：</div></pre></td></tr></table></figure></p>
+<p>  ps -ef | grep ora<em> | grep -v grep | wc -l<br>  ps -ef | grep ora</em> | grep -v grep<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">5. 配置oracle监听 </div><div class="line">  `./netca /silent /responsefile /home/oracle/database/response/netca.rsp`</div><div class="line">   * 若启动报错</div></pre></td></tr></table></figure></p>
+<p>  Oracle Net Services 配置:<br>  #</p>
+<h1 id="An-unexpected-error-has-been-detected-by-HotSpot-Virtual-Machine"><a href="#An-unexpected-error-has-been-detected-by-HotSpot-Virtual-Machine" class="headerlink" title="An unexpected error has been detected by HotSpot Virtual Machine:"></a>An unexpected error has been detected by HotSpot Virtual Machine:</h1><p>  #</p>
+<h1 id="SIGSEGV-0xb-at-pc-0x00007f2ad35f0b9d-pid-22693-tid-139822952867648"><a href="#SIGSEGV-0xb-at-pc-0x00007f2ad35f0b9d-pid-22693-tid-139822952867648" class="headerlink" title="SIGSEGV (0xb) at pc=0x00007f2ad35f0b9d, pid=22693, tid=139822952867648"></a>SIGSEGV (0xb) at pc=0x00007f2ad35f0b9d, pid=22693, tid=139822952867648</h1><p>  #</p>
+<h1 id="Java-VM-Java-HotSpot-TM-64-Bit-Server-VM-1-5-0-17-b03-mixed-mode"><a href="#Java-VM-Java-HotSpot-TM-64-Bit-Server-VM-1-5-0-17-b03-mixed-mode" class="headerlink" title="Java VM: Java HotSpot(TM) 64-Bit Server VM (1.5.0_17-b03 mixed mode)"></a>Java VM: Java HotSpot(TM) 64-Bit Server VM (1.5.0_17-b03 mixed mode)</h1><h1 id="Problematic-frame"><a href="#Problematic-frame" class="headerlink" title="Problematic frame:"></a>Problematic frame:</h1><h1 id="C-libclntsh-so-11-1-0x62ab9d-snlinGetAddrInfo-0x1b1"><a href="#C-libclntsh-so-11-1-0x62ab9d-snlinGetAddrInfo-0x1b1" class="headerlink" title="C  [libclntsh.so.11.1+0x62ab9d]  snlinGetAddrInfo+0x1b1"></a>C  [libclntsh.so.11.1+0x62ab9d]  snlinGetAddrInfo+0x1b1</h1><p>  #</p>
+<h1 id="An-error-report-file-with-more-information-is-saved-as-hs-err-pid22693-log"><a href="#An-error-report-file-with-more-information-is-saved-as-hs-err-pid22693-log" class="headerlink" title="An error report file with more information is saved as hs_err_pid22693.log"></a>An error report file with more information is saved as hs_err_pid22693.log</h1><p>  #</p>
+<h1 id="If-you-would-like-to-submit-a-bug-report-please-visit"><a href="#If-you-would-like-to-submit-a-bug-report-please-visit" class="headerlink" title="If you would like to submit a bug report, please visit:"></a>If you would like to submit a bug report, please visit:</h1><h1 id="http-java-sun-com-webapps-bugreport-crash-jsp"><a href="#http-java-sun-com-webapps-bugreport-crash-jsp" class="headerlink" title="http://java.sun.com/webapps/bugreport/crash.jsp"></a><a href="http://java.sun.com/webapps/bugreport/crash.jsp" target="_blank" rel="external">http://java.sun.com/webapps/bugreport/crash.jsp</a></h1><p>  #<br>  ./netca: 行 178: 22693 已放弃          $JRE $JRE_OPTIONS -classpath $CLASSPATH oracle.net.ca.NetCA $*<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">* 尝试修改主机名：</div></pre></td></tr></table></figure></p>
+<p>  vi /etc/sysconfig/network<br>  HOSTNAME=Alien<br>  vi /etc/hosts<br>  127.0.0.1      localhost.localdomain localhost linuxhostname Alien<br>```</p>
+<ul>
+<li>查看监听器状态：<code>lsnrctl status</code></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      oracle学习
+    
+    </summary>
+    
+      <category term="学习笔记" scheme="https://aliennever.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="oracle" scheme="https://aliennever.github.io/tags/oracle/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Linux虚拟机安装</title>
     <link href="https://aliennever.github.io/2018/03/01/03-20180301/"/>
     <id>https://aliennever.github.io/2018/03/01/03-20180301/</id>
@@ -99,6 +178,42 @@
     
     
       <category term="Linux" scheme="https://aliennever.github.io/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>weblogic删除域</title>
+    <link href="https://aliennever.github.io/2018/02/26/01-20180226/"/>
+    <id>https://aliennever.github.io/2018/02/26/01-20180226/</id>
+    <published>2018-02-26T04:00:00.000Z</published>
+    <updated>2018-03-01T00:47:14.778Z</updated>
+    
+    <content type="html"><![CDATA[<p>以weblogic主目录路径为：D:\Oracle\Middleware，删除域名为base_domain的域为例</p>
+<ol>
+<li>删除D:\Oracle\Middleware\user_projects\domains下的base_domain整个文件夹</li>
+<li>删除开始菜单中Oracle Welogic\User Projects下的base_domain整个文件夹</li>
+<li><p>删除D:\Oracle\Middleware\wlserver_10.3\common\nodemanager\nodemanager.domains里的base_domain域内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#Domains and directories created by Configuration Wizard</div><div class="line">#Sat Feb 24 08:48:09 CST 2018</div><div class="line">deve_domain=D\:\\Oracle\\Middleware\\user_projects\\domains\\deve_domain</div><div class="line">base_domain=D\:\\Oracle\\Middleware\\user_projects\\domains\\base_domain</div></pre></td></tr></table></figure>
+<p>删除以上base_domain一行</p>
+</li>
+<li><p>删除 D:\Oracle\Middleware\domain-registry.xml 里的base_domain域内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</div><div class="line">&lt;domain-registry xmlns=&quot;http://xmlns.oracle.com/weblogic/domain-registry&quot;&gt;</div><div class="line">&lt;domain location=&quot;D:\Oracle\Middleware\user_projects\domains\deve_domain&quot;/&gt;</div><div class="line">&lt;domain location=&quot;D:\Oracle\Middleware\user_projects\domains\base_domain&quot;/&gt;</div><div class="line">&lt;/domain-registry&gt;</div></pre></td></tr></table></figure>
+<p>删除以上base_domain一行</p>
+</li>
+</ol>
+<p>附一个删除脚本：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">import os</div><div class="line">import shutil</div><div class="line">import re</div><div class="line">def deleteDomain(domainName):</div><div class="line">	domainPath=r&apos;D:\Oracle\Middleware\user_projects\domains&apos;</div><div class="line">	startMenuPath=r&apos;C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Oracle WebLogic\User Projects&apos;</div><div class="line">	nodemanagerPath=r&apos;D:\Oracle\Middleware\wlserver_10.3\common\nodemanager\nodemanager.domains&apos;</div><div class="line">	nodemanagerPathNew=r&apos;D:\Oracle\Middleware\wlserver_10.3\common\nodemanager\nodemanagertemp.domains&apos;</div><div class="line">	domainRegistryPath=r&apos;D:\Oracle\Middleware\domain-registry.xml&apos;</div><div class="line">	domainRegistryPathNew=r&apos;D:\Oracle\Middleware\domain-registrytemp.xml&apos;</div><div class="line">    </div><div class="line">	if domainName.strip()!=&apos;&apos;:</div><div class="line">		try:</div><div class="line">			deleteDomainPath=os.path.join(domainPath,domainName)</div><div class="line">			deleteStartMenuPath=os.path.join(startMenuPath,domainName)</div><div class="line">			if os.path.isdir(deleteDomainPath):</div><div class="line">				shutil.rmtree(deleteDomainPath)</div><div class="line">				print (&quot;删除域目录成功！&quot;)</div><div class="line">			else:</div><div class="line">				print (&quot;域目录不存在！&quot;)</div><div class="line">			if os.path.isdir(deleteStartMenuPath):</div><div class="line">				shutil.rmtree(deleteStartMenuPath)</div><div class="line">				print (&quot;删除域开始菜单成功！&quot;)</div><div class="line">			else:</div><div class="line">				print (&quot;域开始菜单目录不存在！&quot;)		</div><div class="line">			with open(nodemanagerPath, &apos;r&apos;) as f:</div><div class="line">				with open(nodemanagerPathNew, &apos;w&apos;) as g:</div><div class="line">					for line in f.readlines():</div><div class="line">						if not re.match(domainName,line):</div><div class="line">							g.write(line)</div><div class="line">			os.remove(nodemanagerPath)</div><div class="line">			os.rename(nodemanagerPathNew,nodemanagerPath)</div><div class="line">			with open(domainRegistryPath, &apos;r&apos;) as f:</div><div class="line">				with open(domainRegistryPathNew, &apos;w&apos;) as g:</div><div class="line">					for line in f.readlines():</div><div class="line">						if not re.search(domainName,line):</div><div class="line">							g.write(line)</div><div class="line">			os.remove(domainRegistryPath)</div><div class="line">			os.rename(domainRegistryPathNew,domainRegistryPath)</div><div class="line">		except Exception as err:</div><div class="line">			print (&quot;删除域失败：&#123;0&#125;&quot;.format(err))    </div><div class="line">	else:</div><div class="line">		print (&quot;域名输入有误！&quot;)</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      weblgoic学习
+    
+    </summary>
+    
+      <category term="学习笔记" scheme="https://aliennever.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="weblogic" scheme="https://aliennever.github.io/tags/weblogic/"/>
     
   </entry>
   
@@ -247,42 +362,6 @@
 </li>
 <li>部署服务：<br>分别选择相应的项目路径部署Proxy项目和MyProject项目，程序中调用Jndi时也需要使用准确的IP地址！</li>
 </ul>
-]]></content>
-    
-    <summary type="html">
-    
-      weblgoic学习
-    
-    </summary>
-    
-      <category term="学习笔记" scheme="https://aliennever.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="weblogic" scheme="https://aliennever.github.io/tags/weblogic/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>weblogic删除域</title>
-    <link href="https://aliennever.github.io/2018/02/26/01-20180226/"/>
-    <id>https://aliennever.github.io/2018/02/26/01-20180226/</id>
-    <published>2018-02-26T04:00:00.000Z</published>
-    <updated>2018-03-01T00:47:14.778Z</updated>
-    
-    <content type="html"><![CDATA[<p>以weblogic主目录路径为：D:\Oracle\Middleware，删除域名为base_domain的域为例</p>
-<ol>
-<li>删除D:\Oracle\Middleware\user_projects\domains下的base_domain整个文件夹</li>
-<li>删除开始菜单中Oracle Welogic\User Projects下的base_domain整个文件夹</li>
-<li><p>删除D:\Oracle\Middleware\wlserver_10.3\common\nodemanager\nodemanager.domains里的base_domain域内容</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#Domains and directories created by Configuration Wizard</div><div class="line">#Sat Feb 24 08:48:09 CST 2018</div><div class="line">deve_domain=D\:\\Oracle\\Middleware\\user_projects\\domains\\deve_domain</div><div class="line">base_domain=D\:\\Oracle\\Middleware\\user_projects\\domains\\base_domain</div></pre></td></tr></table></figure>
-<p>删除以上base_domain一行</p>
-</li>
-<li><p>删除 D:\Oracle\Middleware\domain-registry.xml 里的base_domain域内容</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</div><div class="line">&lt;domain-registry xmlns=&quot;http://xmlns.oracle.com/weblogic/domain-registry&quot;&gt;</div><div class="line">&lt;domain location=&quot;D:\Oracle\Middleware\user_projects\domains\deve_domain&quot;/&gt;</div><div class="line">&lt;domain location=&quot;D:\Oracle\Middleware\user_projects\domains\base_domain&quot;/&gt;</div><div class="line">&lt;/domain-registry&gt;</div></pre></td></tr></table></figure>
-<p>删除以上base_domain一行</p>
-</li>
-</ol>
-<p>附一个删除脚本：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">import os</div><div class="line">import shutil</div><div class="line">import re</div><div class="line">def deleteDomain(domainName):</div><div class="line">	domainPath=r&apos;D:\Oracle\Middleware\user_projects\domains&apos;</div><div class="line">	startMenuPath=r&apos;C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Oracle WebLogic\User Projects&apos;</div><div class="line">	nodemanagerPath=r&apos;D:\Oracle\Middleware\wlserver_10.3\common\nodemanager\nodemanager.domains&apos;</div><div class="line">	nodemanagerPathNew=r&apos;D:\Oracle\Middleware\wlserver_10.3\common\nodemanager\nodemanagertemp.domains&apos;</div><div class="line">	domainRegistryPath=r&apos;D:\Oracle\Middleware\domain-registry.xml&apos;</div><div class="line">	domainRegistryPathNew=r&apos;D:\Oracle\Middleware\domain-registrytemp.xml&apos;</div><div class="line">    </div><div class="line">	if domainName.strip()!=&apos;&apos;:</div><div class="line">		try:</div><div class="line">			deleteDomainPath=os.path.join(domainPath,domainName)</div><div class="line">			deleteStartMenuPath=os.path.join(startMenuPath,domainName)</div><div class="line">			if os.path.isdir(deleteDomainPath):</div><div class="line">				shutil.rmtree(deleteDomainPath)</div><div class="line">				print (&quot;删除域目录成功！&quot;)</div><div class="line">			else:</div><div class="line">				print (&quot;域目录不存在！&quot;)</div><div class="line">			if os.path.isdir(deleteStartMenuPath):</div><div class="line">				shutil.rmtree(deleteStartMenuPath)</div><div class="line">				print (&quot;删除域开始菜单成功！&quot;)</div><div class="line">			else:</div><div class="line">				print (&quot;域开始菜单目录不存在！&quot;)		</div><div class="line">			with open(nodemanagerPath, &apos;r&apos;) as f:</div><div class="line">				with open(nodemanagerPathNew, &apos;w&apos;) as g:</div><div class="line">					for line in f.readlines():</div><div class="line">						if not re.match(domainName,line):</div><div class="line">							g.write(line)</div><div class="line">			os.remove(nodemanagerPath)</div><div class="line">			os.rename(nodemanagerPathNew,nodemanagerPath)</div><div class="line">			with open(domainRegistryPath, &apos;r&apos;) as f:</div><div class="line">				with open(domainRegistryPathNew, &apos;w&apos;) as g:</div><div class="line">					for line in f.readlines():</div><div class="line">						if not re.search(domainName,line):</div><div class="line">							g.write(line)</div><div class="line">			os.remove(domainRegistryPath)</div><div class="line">			os.rename(domainRegistryPathNew,domainRegistryPath)</div><div class="line">		except Exception as err:</div><div class="line">			print (&quot;删除域失败：&#123;0&#125;&quot;.format(err))    </div><div class="line">	else:</div><div class="line">		print (&quot;域名输入有误！&quot;)</div></pre></td></tr></table></figure></p>
 ]]></content>
     
     <summary type="html">
