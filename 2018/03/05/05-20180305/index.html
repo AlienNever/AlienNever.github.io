@@ -27,7 +27,7 @@
 <meta property="og:url" content="https://aliennever.github.io/2018/03/05/05-20180305/index.html">
 <meta property="og:site_name" content="Alien">
 <meta property="og:description" content="oracle学习">
-<meta property="og:updated_time" content="2018-03-09T09:07:34.934Z">
+<meta property="og:updated_time" content="2018-03-12T00:50:46.290Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Oracle11g最小静默安装">
 <meta name="twitter:description" content="oracle学习">
@@ -154,7 +154,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#前期准备"><span class="post-toc-number">1.</span> <span class="post-toc-text">前期准备</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#An-unexpected-error-has-been-detected-by-HotSpot-Virtual-Machine"><span class="post-toc-number">2.</span> <span class="post-toc-text">An unexpected error has been detected by HotSpot Virtual Machine:</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#SIGSEGV-0xb-at-pc-0x00007f2ad35f0b9d-pid-22693-tid-139822952867648"><span class="post-toc-number">3.</span> <span class="post-toc-text">SIGSEGV (0xb) at pc=0x00007f2ad35f0b9d, pid=22693, tid=139822952867648</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Java-VM-Java-HotSpot-TM-64-Bit-Server-VM-1-5-0-17-b03-mixed-mode"><span class="post-toc-number">4.</span> <span class="post-toc-text">Java VM: Java HotSpot(TM) 64-Bit Server VM (1.5.0_17-b03 mixed mode)</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Problematic-frame"><span class="post-toc-number">5.</span> <span class="post-toc-text">Problematic frame:</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#C-libclntsh-so-11-1-0x62ab9d-snlinGetAddrInfo-0x1b1"><span class="post-toc-number">6.</span> <span class="post-toc-text">C  [libclntsh.so.11.1+0x62ab9d]  snlinGetAddrInfo+0x1b1</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#An-error-report-file-with-more-information-is-saved-as-hs-err-pid22693-log"><span class="post-toc-number">7.</span> <span class="post-toc-text">An error report file with more information is saved as hs_err_pid22693.log</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#If-you-would-like-to-submit-a-bug-report-please-visit"><span class="post-toc-number">8.</span> <span class="post-toc-text">If you would like to submit a bug report, please visit:</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#http-java-sun-com-webapps-bugreport-crash-jsp"><span class="post-toc-number">9.</span> <span class="post-toc-text">http://java.sun.com/webapps/bugreport/crash.jsp</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#前期准备"><span class="post-toc-number">1.</span> <span class="post-toc-text">前期准备</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#安装数据库"><span class="post-toc-number">2.</span> <span class="post-toc-text">安装数据库</span></a></li></ol>
         </nav>
     </aside>
     
@@ -185,16 +185,11 @@
 <li>单机环境需要准备所需依赖包packages</li>
 </ul>
 </li>
-<li><p>单机环境安装net-tools和unzip：</p>
-<ul>
-<li><p>配置本地yum源</p>
-<ol>
+<li>单机环境安装net-tools和unzip：<ul>
+<li>配置本地yum源<ol>
 <li>打开VMware,在CD/DVD设置选项中，将Redhat7镜像文件放入CD/DVD中</li>
-<li><p>将虚拟光驱挂载到 /mnt 文件夹下 （确保虚拟光驱处于链接状态）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mount /dev/sr0 /mnt</div><div class="line">mount: /dev/sr0 is write-protected, mounting read-only</div></pre></td></tr></table></figure>
-</li>
-<li><p>/mnt/Packages下安装net-tools和unzip包 <code>rpm -ivh net-tools</code></p>
-</li>
+<li>将虚拟光驱挂载到 /mnt 文件夹下 （确保虚拟光驱处于链接状态）<code>mount /dev/sr0 /mnt</code></li>
+<li>/mnt/Packages下安装net-tools和unzip包 <code>rpm -ivh net-tools</code></li>
 </ol>
 </li>
 </ul>
@@ -215,25 +210,38 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">groupadd oinstall</div><div class="line">groupadd dba</div><div class="line">useradd -g oinstall -G dba oracle</div><div class="line">passwd oracle</div></pre></td></tr></table></figure>
 </li>
 <li><p>切换到oracle用户创建目录修改属组和权限</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">    mkdir -p /home/oracle/oracle11g/base         #基目录</div><div class="line">    mkdir -p /home/oracle/oracle11g/base/home    #家目录</div><div class="line">    mkdir -p /home/oracle/oracle11g/oraInventory    #清单目录</div><div class="line">```	</div><div class="line">9. 配置oracle用户的环境变量，编辑  ~/.bash_profile：</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mkdir -p /home/oracle/oracle11g/base         #基目录</div><div class="line">mkdir -p /home/oracle/oracle11g/base/home    #家目录</div><div class="line">mkdir -p /home/oracle/oracle11g/oraInventory    #清单目录</div></pre></td></tr></table></figure>
+</li>
+<li><p>配置oracle用户的环境变量，编辑  ~/.bash_profile：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">export ORACLE_BASE=/home/oracle/oracle11g/base</div><div class="line">export ORACLE_HOME=$ORACLE_BASE/home </div><div class="line">export ORACLE_SID=orcl</div><div class="line">export PATH=$ORACLE_HOME/bin:$PATH:$HOME/bin </div><div class="line">export TNS_ADMIN=$ORACLE_HOME/network/admin </div><div class="line">export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ORACLE_HOME/lib</div></pre></td></tr></table></figure>
+</li>
+<li><p>上传oracle11g安装包并解压</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">unzip p13390677_112040_Linux-x86-64_1of7.zip </div><div class="line">unzip p13390677_112040_Linux-x86-64_2of7.zip</div></pre></td></tr></table></figure>
 </li>
 </ol>
-<p>export ORACLE_BASE=/home/oracle/oracle11g/base<br>export ORACLE_HOME=$ORACLE_BASE/home<br>export ORACLE_SID=orcl<br>export PATH=$ORACLE_HOME/bin:$PATH:$HOME/bin<br>export TNS_ADMIN=$ORACLE_HOME/network/admin<br>export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ORACLE_HOME/lib<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">10. 上传oracle11g安装包并解压</div></pre></td></tr></table></figure></p>
-<pre><code>unzip p13390677_112040_Linux-x86-64_1of7.zip 
-unzip p13390677_112040_Linux-x86-64_2of7.zip
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">---</div><div class="line"></div><div class="line"># 安装数据库</div><div class="line">---</div><div class="line">1. 修改静默安装响应文件/home/oracle/database/response/db_install.rsp:</div></pre></td></tr></table></figure>
-<p>  oracle.install.option=INSTALL_DB_SWONLY<br>  ORACLE_HOSTNAME=Alien<br>  UNIX_GROUP_NAME=oinstall<br>  INVENTORY_LOCATION=/home/oracle/oracle11g/oraInventory<br>  SELECTED_LANGUAGES=en,zh_CN<br>  ORACLE_HOME=/home/oracle/oracle11g/base/home<br>  ORACLE_BASE=/home/oracle/oracle11g/base<br>  oracle.install.db.InstallEdition=EE<br>  oracle.install.db.isCustomInstall=false<br>  oracle.install.db.DBA_GROUP=dba<br>  oracle.install.db.OPER_GROUP=oinstall<br>  SECURITY_UPDATES_VIA_MYORACLESUPPORT=false<br>  DECLINE_SECURITY_UPDATES=true<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">2. 启动静默安装程序</div><div class="line">  `./runInstaller -silent -ignorePrereq -responseFile /home/oracle/database/response/db_install.rsp`</div><div class="line">3. 修改静默创建数据库文件/home/oracle/database/response/dbca.rsp:</div><div class="line">4. 静默创建数据库:</div><div class="line">  `./dbca -silent -responseFile /home/oracle/database/response/dbca.rsp`</div><div class="line">  建库后实例检查：</div></pre></td></tr></table></figure></p>
-<p>  ps -ef | grep ora<em> | grep -v grep | wc -l<br>  ps -ef | grep ora</em> | grep -v grep<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">5. 配置oracle监听 </div><div class="line">  `./netca /silent /responsefile /home/oracle/database/response/netca.rsp`</div><div class="line">   * 若启动报错</div></pre></td></tr></table></figure></p>
-<p>  Oracle Net Services 配置:<br>  #</p>
-<h1 id="An-unexpected-error-has-been-detected-by-HotSpot-Virtual-Machine"><a href="#An-unexpected-error-has-been-detected-by-HotSpot-Virtual-Machine" class="headerlink" title="An unexpected error has been detected by HotSpot Virtual Machine:"></a>An unexpected error has been detected by HotSpot Virtual Machine:</h1><p>  #</p>
-<h1 id="SIGSEGV-0xb-at-pc-0x00007f2ad35f0b9d-pid-22693-tid-139822952867648"><a href="#SIGSEGV-0xb-at-pc-0x00007f2ad35f0b9d-pid-22693-tid-139822952867648" class="headerlink" title="SIGSEGV (0xb) at pc=0x00007f2ad35f0b9d, pid=22693, tid=139822952867648"></a>SIGSEGV (0xb) at pc=0x00007f2ad35f0b9d, pid=22693, tid=139822952867648</h1><p>  #</p>
-<h1 id="Java-VM-Java-HotSpot-TM-64-Bit-Server-VM-1-5-0-17-b03-mixed-mode"><a href="#Java-VM-Java-HotSpot-TM-64-Bit-Server-VM-1-5-0-17-b03-mixed-mode" class="headerlink" title="Java VM: Java HotSpot(TM) 64-Bit Server VM (1.5.0_17-b03 mixed mode)"></a>Java VM: Java HotSpot(TM) 64-Bit Server VM (1.5.0_17-b03 mixed mode)</h1><h1 id="Problematic-frame"><a href="#Problematic-frame" class="headerlink" title="Problematic frame:"></a>Problematic frame:</h1><h1 id="C-libclntsh-so-11-1-0x62ab9d-snlinGetAddrInfo-0x1b1"><a href="#C-libclntsh-so-11-1-0x62ab9d-snlinGetAddrInfo-0x1b1" class="headerlink" title="C  [libclntsh.so.11.1+0x62ab9d]  snlinGetAddrInfo+0x1b1"></a>C  [libclntsh.so.11.1+0x62ab9d]  snlinGetAddrInfo+0x1b1</h1><p>  #</p>
-<h1 id="An-error-report-file-with-more-information-is-saved-as-hs-err-pid22693-log"><a href="#An-error-report-file-with-more-information-is-saved-as-hs-err-pid22693-log" class="headerlink" title="An error report file with more information is saved as hs_err_pid22693.log"></a>An error report file with more information is saved as hs_err_pid22693.log</h1><p>  #</p>
-<h1 id="If-you-would-like-to-submit-a-bug-report-please-visit"><a href="#If-you-would-like-to-submit-a-bug-report-please-visit" class="headerlink" title="If you would like to submit a bug report, please visit:"></a>If you would like to submit a bug report, please visit:</h1><h1 id="http-java-sun-com-webapps-bugreport-crash-jsp"><a href="#http-java-sun-com-webapps-bugreport-crash-jsp" class="headerlink" title="http://java.sun.com/webapps/bugreport/crash.jsp"></a><a href="http://java.sun.com/webapps/bugreport/crash.jsp" target="_blank" rel="external">http://java.sun.com/webapps/bugreport/crash.jsp</a></h1><p>  #<br>  ./netca: 行 178: 22693 已放弃          $JRE $JRE_OPTIONS -classpath $CLASSPATH oracle.net.ca.NetCA $*<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">* 尝试修改主机名：</div></pre></td></tr></table></figure></p>
-<p>  vi /etc/sysconfig/network<br>  HOSTNAME=Alien<br>  vi /etc/hosts<br>  127.0.0.1      localhost.localdomain localhost linuxhostname Alien<br>```</p>
+<hr>
+<h1 id="安装数据库"><a href="#安装数据库" class="headerlink" title="安装数据库"></a>安装数据库</h1><hr>
+<ol>
+<li><p>修改静默安装响应文件/home/oracle/database/response/db_install.rsp:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">oracle.install.option=INSTALL_DB_SWONLY </div><div class="line">ORACLE_HOSTNAME=Alien</div><div class="line">UNIX_GROUP_NAME=oinstall</div><div class="line">INVENTORY_LOCATION=/home/oracle/oracle11g/oraInventory</div><div class="line">SELECTED_LANGUAGES=en,zh_CN</div><div class="line">ORACLE_HOME=/home/oracle/oracle11g/base/home</div><div class="line">ORACLE_BASE=/home/oracle/oracle11g/base</div><div class="line">oracle.install.db.InstallEdition=EE</div><div class="line">oracle.install.db.isCustomInstall=false</div><div class="line">oracle.install.db.DBA_GROUP=dba</div><div class="line">oracle.install.db.OPER_GROUP=oinstall</div><div class="line">DECLINE_SECURITY_UPDATES=true</div></pre></td></tr></table></figure>
+</li>
+<li><p>启动静默安装程序<br><code>./runInstaller -silent -ignorePrereq -responseFile /home/oracle/database/response/db_install.rsp</code></p>
+</li>
+<li><p>配置oracle监听<br><code>./netca /silent /responsefile /home/oracle/database/response/netca.rsp</code></p>
 <ul>
-<li>查看监听器状态：<code>lsnrctl status</code></li>
+<li><p>若启动报错</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Oracle Net Services 配置:</div><div class="line"> An unexpected error has been detected by HotSpot Virtual Machine:</div><div class="line"> SIGSEGV (0xb) at pc=0x00007f2ad35f0b9d, pid=22693, tid=139822952867648</div><div class="line"> Java VM: Java HotSpot(TM) 64-Bit Server VM (1.5.0_17-b03 mixed mode)</div><div class="line"> Problematic frame:</div><div class="line"> C  [libclntsh.so.11.1+0x62ab9d]  snlinGetAddrInfo+0x1b1</div><div class="line"> An error report file with more information is saved as hs_err_pid22693.log</div><div class="line"> If you would like to submit a bug report, please visit:</div><div class="line"> http://java.sun.com/webapps/bugreport/crash.jsp</div><div class="line"> ./netca: 行 178: 22693 已放弃          $JRE $JRE_OPTIONS -classpath $CLASSPATH oracle.net.ca.NetCA $*</div></pre></td></tr></table></figure>
+</li>
+<li><p>尝试修改主机名：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">vi /etc/sysconfig/network</div><div class="line">HOSTNAME=Alien</div><div class="line">vi /etc/hosts</div><div class="line">127.0.0.1      localhost.localdomain localhost linuxhostname Alien</div></pre></td></tr></table></figure>
+</li>
+<li><p>查看监听器状态：<code>lsnrctl status</code></p>
+</li>
 </ul>
+</li>
+<li><p>静默创建数据库:<br><code>./dbca -silent -responseFile /home/oracle/database/response/dbca.rsp</code><br>建库后实例检查：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ps -ef | grep ora_ | grep -v grep | wc -l</div><div class="line">ps -ef | grep ora_ | grep -v grep</div></pre></td></tr></table></figure></li>
+</ol>
 
         </div>
 
@@ -241,7 +249,7 @@ unzip p13390677_112040_Linux-x86-64_2of7.zip
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2018-03-09T09:07:34.934Z" itemprop="dateUpdated">2018-03-09 17:07:34</time>
+    Last updated: <time datetime="2018-03-12T00:50:46.290Z" itemprop="dateUpdated">2018-03-12 08:50:46</time>
 </span><br>
 
 
