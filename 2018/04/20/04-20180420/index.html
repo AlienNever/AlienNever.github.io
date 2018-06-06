@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>Weblogic打补丁 | Alien | 有梦不觉人生寒,有爱不觉天涯远</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Weblogic">
+    <meta name="description" content="weblogic学习">
+<meta name="keywords" content="Weblogic">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Weblogic打补丁">
+<meta property="og:url" content="https://aliennever.github.io/2018/04/20/04-20180420/index.html">
+<meta property="og:site_name" content="Alien">
+<meta property="og:description" content="weblogic学习">
+<meta property="og:updated_time" content="2018-05-04T09:19:14.875Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Weblogic打补丁">
+<meta name="twitter:description" content="weblogic学习">
+    
+        <link rel="alternate" type="application/atom+xml" title="Alien" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/Alien.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">LG</h5>
+          <a href="mailto:76229074@qq.com" title="76229074@qq.com" class="mail">76229074@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/AlienNever" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/u/1515645385" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Weblogic打补丁</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Weblogic打补丁</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-04-20T04:00:00.000Z" itemprop="datePublished" class="page-time">
+  2018-04-20
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/学习笔记/">学习笔记</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+<article id="post-04-20180420"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Weblogic打补丁</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-04-20 12:00:00" datetime="2018-04-20T04:00:00.000Z"  itemprop="datePublished">2018-04-20</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/学习笔记/">学习笔记</a></li></ul>
+
+
+
+            
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <ol>
+<li>停止打PSU补丁的服务器上的所有weblogic服务</li>
+<li><p>查看当前weblogic是打过PSU补丁：</p>
+<ul>
+<li>进入D:\Oracle\Middleware\wlserver_10.3\server\bin目录：</li>
+<li>执行setWLSEnv.cmd(Linux下执行setWLSEnv.sh，设置环境变量)</li>
+<li>执行java weblogic.version:<figure class="highlight plain"><figcaption><span>weblogic.version</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">WebLogic Server 10.3.6.0.180417 PSU Patch for BUG27395085 THU FEB 21 18:34:42 IS T 2018</div><div class="line"></div><div class="line">WebLogic Server 10.3.6.0  Tue Nov 15 08:52:36 PST 2011 1441050</div><div class="line"></div><div class="line">Use &apos;weblogic.version -verbose&apos; to get subsystem information</div><div class="line"></div><div class="line">Use &apos;weblogic.utils.Versions&apos; to get version information for all modules</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>若没打补丁则第一部分只有最后一行，上面可见已打过PSU补丁</p>
+<ul>
+<li>查看详细信息，可看到已达补丁ID<br>D:\Oracle\Middleware\utils\bsu&gt;bsu.cmd -prod_dir=D:\Oracle\Middleware\wlserver_10.3 -status=applied -verbose -view<figure class="highlight plain"><figcaption><span>-prod_dir=D:\Oracle\Middleware\wlserver_10.3 -status=applied -verbose -view</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"> 四月 20, 2018 11:30:36 上午 java.util.prefs.WindowsPreferences &lt;init&gt;</div><div class="line"> WARNING: Could not open/create prefs root node Software\JavaSoft\Prefs at root 0</div><div class="line"> x80000002. Windows RegCreateKeyEx(...) returned error code 5.</div><div class="line"> ProductName:       WebLogic Server</div><div class="line"> ProductVersion:    10.3 MP6</div><div class="line"> Components:        </div><div class="line">               WebLogic Server/Core Application Server,WebLogic Server/Admi</div><div class="line">               nistration Console,WebLogic Server/Configuration Wizard and</div><div class="line">               Upgrade Framework,WebLogic Server/Web 2.0 HTTP Pub-Sub Serve</div><div class="line">               r,WebLogic Server/WebLogic SCA,WebLogic Server/WebLogic JDBC</div><div class="line">                Drivers,WebLogic Server/Third Party JDBC Drivers,WebLogic S</div><div class="line">               erver/WebLogic Server Clients,WebLogic Server/WebLogic Web S</div><div class="line">               erver Plugins,WebLogic Server/UDDI and Xquery Support,WebLog</div><div class="line">               ic Server/Evaluation Database,WebLogic Server/Workshop Code</div><div class="line">               Completion Support</div><div class="line">BEAHome:           D:\Oracle\Middleware</div><div class="line">ProductHome:       D:\Oracle\Middleware\wlserver_10.3</div><div class="line">PatchSystemDir:    D:\Oracle\Middleware\utils\bsu</div><div class="line">PatchDir:          D:\Oracle\Middleware\patch_wls1036</div><div class="line">Profile:           Default</div><div class="line">DownloadDir:       D:\Oracle\Middleware\utils\bsu\cache_dir</div><div class="line">JavaVersion:       1.6.0_29</div><div class="line">JavaVendor:        Sun</div><div class="line"></div><div class="line"></div><div class="line">Patch ID:          GFWX</div><div class="line">PatchContainer:    GFWX.jar</div><div class="line">Checksum:          -2141599595</div><div class="line">Severity:          optional</div><div class="line">Category:          General</div><div class="line">CR/BUG:            27395085</div><div class="line">Restart:           true</div><div class="line">Description:       WLS PATCH SET UPDATE 10.3.6.0.180417</div><div class="line">WLS PATCH SET UPDATE 10.3.6.0.180417</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>卸载已打过的PSU补丁，如没有打过PSU则忽略该步骤：</p>
+<ul>
+<li>D:\Oracle\Middleware\utils\bsu&gt;bsr.cmd -remove -patchlist=ZLNA -prod_dir=D:\Oracle\Middleware\wlserver_10.3</li>
+</ul>
+</li>
+<li>官网下载最新的PSU，查看weblogic的安装目录D:\Oracle\Middleware\utils是否有cache_dir目录，无则新建目录cache_dir<br>将下载的PSU解压到cache_dir中</li>
+<li>修改bsu.cmd(linux下为bsu.sh)的内存大小，建议为1g，默认不修改会报错无法执行PSU脚本<br>MEM_ARGS=-Xms1024m -Xmx1024m</li>
+<li><p>进入D:\Oracle\Middleware\utils\bsu目录下执行操作<br>D:\Oracle\Middleware\utils\bsujava -jar patch-client.jar -install -patch_download_dir=D:\Oracle\Middleware\utils\bsu\cache_dir -patchlist=GFWX(cache_dir中jar包名) -prod_dir=D:\Oracle\Middleware\wlserver_10.3</p>
+ <figure class="highlight plain"><figcaption><span>for conflicts..</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">No conflict(s) detected</div><div class="line">Installing Patch ID: GFWX..</div><div class="line">Result: Success</div></pre></td></tr></table></figure>
+</li>
+<li><p>启动weblogic服务验证</p>
+</li>
+</ol>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-05-04T09:19:14.875Z" itemprop="dateUpdated">2018-05-04 17:19:14</time>
+</span><br>
+
+
+        
+    </div>
+    <footer>
+        <a href="https://aliennever.github.io">
+            <img src="/img/Alien.jpg" alt="LG">
+            LG
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Weblogic/">Weblogic</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://aliennever.github.io/2018/04/20/04-20180420/&title=《Weblogic打补丁》 — Alien&pic=https://aliennever.github.io/img/Alien.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://aliennever.github.io/2018/04/20/04-20180420/&title=《Weblogic打补丁》 — Alien&source=终有一天，大器晚成" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://aliennever.github.io/2018/04/20/04-20180420/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Weblogic打补丁》 — Alien&url=https://aliennever.github.io/2018/04/20/04-20180420/&via=https://aliennever.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://aliennever.github.io/2018/04/20/04-20180420/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/03/05/03-20180305/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Oracle11g最小静默安装</h4>
+      </a>
+    </div>
+  
+
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://aliennever.github.io/2018/04/20/04-20180420/&title=《Weblogic打补丁》 — Alien&pic=https://aliennever.github.io/img/Alien.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://aliennever.github.io/2018/04/20/04-20180420/&title=《Weblogic打补丁》 — Alien&source=终有一天，大器晚成" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://aliennever.github.io/2018/04/20/04-20180420/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Weblogic打补丁》 — Alien&url=https://aliennever.github.io/2018/04/20/04-20180420/&via=https://aliennever.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://aliennever.github.io/2018/04/20/04-20180420/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJklEQVR42u3ay26EMAwF0P7/T9PtSB3otc2MRHKyqhADOSxcP/LzE6/jZf298nr9+v6zJ5/96uaFgYHxWMZxuRJG70Mk4GRvGBgY+zCSUHh9T8LLN119LwYGBsb1o3uby8M6BgYGxiTg5oVuUvpOAj0GBsYOjKSIvf7V5M6v1uIYGBgPZOTNsu///ZH5BgYGxqMYR3Elo8fq8CAJ0P/sCgMDY2lGr0DNt9UbAPQKZgwMjFUZ1XKxdxSjyr4O7m+uYGBgLM0YxenWJnqJYPQuDAyMpRm9LlY1KUzCbvVdGBgYOzCuQ2QSKHuj0Hmb781/DAwMjKUZd6WDvTZcPipolq8YGBgPZ1RLzXkqWQijvc+BgYGxNGNS7+YjyR6jd4wDAwNjDUbePpsH1ryVlr+98A0wMDCWYPSCYLUZlzfsCokpBgbGBoxCQVhsjSWf7IYDZBgYGNszkqBcTe+apz/Ono+BgbE0ozq2zDGTFluesGJgYGD0StwcUA2s5SMXGBgYCzHyA6y9A1v5ICEpd093joGBsQGjetBh3mLL23BRKMfAwNiAMUndkhCcB9ze8zEwMFZlHMWVpIPVAJ0PNZvNNQwMjIczeg2vXot/gswbeRgYGKsyJkG2WqZWQ3ZeWmNgYOzAmJejdw0AmqEfAwMDYzzmrI4WyjksBgYGxsdIdxXDGBgYOzCSlK7aaMuPjlXHnBgYGLsxJnlXsqF50/+2oSYGBsbzGL+qUZNh76g1eQAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
