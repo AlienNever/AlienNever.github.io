@@ -19,15 +19,15 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="Weblogic">
+    <meta name="keywords" content="weblogic">
     <meta name="description" content="weblogic学习">
-<meta name="keywords" content="Weblogic">
+<meta name="keywords" content="weblogic">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Weblogic安装补丁">
 <meta property="og:url" content="https://aliennever.github.io/2018/04/20/04-20180420/index.html">
 <meta property="og:site_name" content="Alien">
 <meta property="og:description" content="weblogic学习">
-<meta property="og:updated_time" content="2018-06-06T03:40:30.340Z">
+<meta property="og:updated_time" content="2018-09-05T02:13:05.221Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Weblogic安装补丁">
 <meta name="twitter:description" content="weblogic学习">
@@ -181,7 +181,7 @@
 </ul>
 <p>若没打补丁则第一部分只有最后一行，上面可见已打过PSU补丁</p>
 <ul>
-<li>查看详细信息，可看到已达补丁ID<br>D:\Oracle\Middleware\utils\bsu&gt;bsu.cmd -prod_dir=D:\Oracle\Middleware\wlserver_10.3 -status=applied -verbose -view<figure class="highlight plain"><figcaption><span>-prod_dir=D:\Oracle\Middleware\wlserver_10.3 -status=applied -verbose -view</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"> 四月 20, 2018 11:30:36 上午 java.util.prefs.WindowsPreferences &lt;init&gt;</div><div class="line"> WARNING: Could not open/create prefs root node Software\JavaSoft\Prefs at root 0</div><div class="line"> x80000002. Windows RegCreateKeyEx(...) returned error code 5.</div><div class="line"> ProductName:       WebLogic Server</div><div class="line"> ProductVersion:    10.3 MP6</div><div class="line"> Components:        </div><div class="line">               WebLogic Server/Core Application Server,WebLogic Server/Admi</div><div class="line">               nistration Console,WebLogic Server/Configuration Wizard and</div><div class="line">               Upgrade Framework,WebLogic Server/Web 2.0 HTTP Pub-Sub Serve</div><div class="line">               r,WebLogic Server/WebLogic SCA,WebLogic Server/WebLogic JDBC</div><div class="line">                Drivers,WebLogic Server/Third Party JDBC Drivers,WebLogic S</div><div class="line">               erver/WebLogic Server Clients,WebLogic Server/WebLogic Web S</div><div class="line">               erver Plugins,WebLogic Server/UDDI and Xquery Support,WebLog</div><div class="line">               ic Server/Evaluation Database,WebLogic Server/Workshop Code</div><div class="line">               Completion Support</div><div class="line">BEAHome:           D:\Oracle\Middleware</div><div class="line">ProductHome:       D:\Oracle\Middleware\wlserver_10.3</div><div class="line">PatchSystemDir:    D:\Oracle\Middleware\utils\bsu</div><div class="line">PatchDir:          D:\Oracle\Middleware\patch_wls1036</div><div class="line">Profile:           Default</div><div class="line">DownloadDir:       D:\Oracle\Middleware\utils\bsu\cache_dir</div><div class="line">JavaVersion:       1.6.0_29</div><div class="line">JavaVendor:        Sun</div><div class="line"></div><div class="line"></div><div class="line">Patch ID:          GFWX</div><div class="line">PatchContainer:    GFWX.jar</div><div class="line">Checksum:          -2141599595</div><div class="line">Severity:          optional</div><div class="line">Category:          General</div><div class="line">CR/BUG:            27395085</div><div class="line">Restart:           true</div><div class="line">Description:       WLS PATCH SET UPDATE 10.3.6.0.180417</div><div class="line">WLS PATCH SET UPDATE 10.3.6.0.180417</div></pre></td></tr></table></figure>
+<li>查看详细信息，可看到已达补丁ID<br>D:\Oracle\Middleware\utils\bsu&gt;bsu.cmd -prod_dir=D:\Oracle\Middleware\wlserver_10.3 -status=applied -verbose -view<br>linux:<br>./bsu.sh -prod_dir=/home/weblogic/Oracle/Middleware/wlserver_10.3 -status=applied -verbose -view<figure class="highlight plain"><figcaption><span>-prod_dir=D:\Oracle\Middleware\wlserver_10.3 -status=applied -verbose -view</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"> 四月 20, 2018 11:30:36 上午 java.util.prefs.WindowsPreferences &lt;init&gt;</div><div class="line"> WARNING: Could not open/create prefs root node Software\JavaSoft\Prefs at root 0</div><div class="line"> x80000002. Windows RegCreateKeyEx(...) returned error code 5.</div><div class="line"> ProductName:       WebLogic Server</div><div class="line"> ProductVersion:    10.3 MP6</div><div class="line"> Components:        </div><div class="line">               WebLogic Server/Core Application Server,WebLogic Server/Admi</div><div class="line">               nistration Console,WebLogic Server/Configuration Wizard and</div><div class="line">               Upgrade Framework,WebLogic Server/Web 2.0 HTTP Pub-Sub Serve</div><div class="line">               r,WebLogic Server/WebLogic SCA,WebLogic Server/WebLogic JDBC</div><div class="line">                Drivers,WebLogic Server/Third Party JDBC Drivers,WebLogic S</div><div class="line">               erver/WebLogic Server Clients,WebLogic Server/WebLogic Web S</div><div class="line">               erver Plugins,WebLogic Server/UDDI and Xquery Support,WebLog</div><div class="line">               ic Server/Evaluation Database,WebLogic Server/Workshop Code</div><div class="line">               Completion Support</div><div class="line">BEAHome:           D:\Oracle\Middleware</div><div class="line">ProductHome:       D:\Oracle\Middleware\wlserver_10.3</div><div class="line">PatchSystemDir:    D:\Oracle\Middleware\utils\bsu</div><div class="line">PatchDir:          D:\Oracle\Middleware\patch_wls1036</div><div class="line">Profile:           Default</div><div class="line">DownloadDir:       D:\Oracle\Middleware\utils\bsu\cache_dir</div><div class="line">JavaVersion:       1.6.0_29</div><div class="line">JavaVendor:        Sun</div><div class="line"></div><div class="line"></div><div class="line">Patch ID:          GFWX</div><div class="line">PatchContainer:    GFWX.jar</div><div class="line">Checksum:          -2141599595</div><div class="line">Severity:          optional</div><div class="line">Category:          General</div><div class="line">CR/BUG:            27395085</div><div class="line">Restart:           true</div><div class="line">Description:       WLS PATCH SET UPDATE 10.3.6.0.180417</div><div class="line">WLS PATCH SET UPDATE 10.3.6.0.180417</div></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
@@ -190,9 +190,9 @@
 <li>D:\Oracle\Middleware\utils\bsu&gt;bsr.cmd -remove -patchlist=ZLNA -prod_dir=D:\Oracle\Middleware\wlserver_10.3</li>
 </ul>
 </li>
-<li>官网下载最新的PSU，查看weblogic的安装目录D:\Oracle\Middleware\utils是否有cache_dir目录，无则新建目录cache_dir<br>将下载的PSU解压到cache_dir中</li>
+<li>官网下载最新的PSU，查看weblogic的安装目录D:\Oracle\Middleware\utils\bsu是否有cache_dir目录，无则新建目录cache_dir<br>将下载的PSU解压到cache_dir中</li>
 <li>修改bsu.cmd(linux下为bsu.sh)的内存大小，建议为1g，默认不修改会报错无法执行PSU脚本<br>MEM_ARGS=-Xms1024m -Xmx1024m</li>
-<li><p>进入D:\Oracle\Middleware\utils\bsu目录下执行操作<br>D:\Oracle\Middleware\utils\bsujava -jar patch-client.jar -install -patch_download_dir=D:\Oracle\Middleware\utils\bsu\cache_dir -patchlist=GFWX(cache_dir中jar包名) -prod_dir=D:\Oracle\Middleware\wlserver_10.3</p>
+<li><p>进入D:\Oracle\Middleware\utils\bsu目录下执行操作<br>D:\Oracle\Middleware\utils\bsujava -jar patch-client.jar -install -patch_download_dir=D:\Oracle\Middleware\utils\bsu\cache_dir -patchlist=GFWX(cache_dir中jar包名) -prod_dir=D:\Oracle\Middleware\wlserver_10.3<br>Linux：<br>./bsu.sh -install -patch_download_dir=/home/weblogic/Oracle/Middleware/utils/bsu/cache_dir -patchlist=GFWX -prod_dir=/home/weblogic/Oracle/Middleware/wlserver_10.3</p>
  <figure class="highlight plain"><figcaption><span>for conflicts..</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">No conflict(s) detected</div><div class="line">Installing Patch ID: GFWX..</div><div class="line">Result: Success</div></pre></td></tr></table></figure>
 </li>
 <li><p>启动weblogic服务验证</p>
@@ -205,7 +205,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2018-06-06T03:40:30.340Z" itemprop="dateUpdated">2018-06-06 11:40:30</time>
+    Last updated: <time datetime="2018-09-05T02:13:05.221Z" itemprop="dateUpdated">2018-09-05 10:13:05</time>
 </span><br>
 
 
@@ -224,7 +224,7 @@
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Weblogic/">Weblogic</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/weblogic/">weblogic</a></li></ul>
 
 
             
@@ -291,7 +291,7 @@
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2018/07/03/05-20180821/" id="post-next" class="post-nav-link">
+      <a href="/2018/07/03/05-20180710OCM Skillset1/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
         <h4 class="title">11gOCM-Skillset1</h4>
       </a>
