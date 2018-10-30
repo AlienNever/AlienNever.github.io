@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://aliennever.github.io/"/>
-  <updated>2018-10-25T09:22:27.765Z</updated>
+  <updated>2018-10-30T06:53:54.627Z</updated>
   <id>https://aliennever.github.io/</id>
   
   <author>
@@ -16,11 +16,69 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>11gOCM-Skillset3</title>
+    <link href="https://aliennever.github.io/2018/10/29/20181029OCM%20Skillset3/"/>
+    <id>https://aliennever.github.io/2018/10/29/20181029OCM Skillset3/</id>
+    <published>2018-10-29T04:00:00.000Z</published>
+    <updated>2018-10-30T06:53:54.627Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Skillset-3"><a href="#Skillset-3" class="headerlink" title="Skillset 3"></a>Skillset 3</h1><h2 id="TASKS"><a href="#TASKS" class="headerlink" title="TASKS:"></a>TASKS:</h2><h3 id="1-PROD2-is-corrupted-Implicit-subject"><a href="#1-PROD2-is-corrupted-Implicit-subject" class="headerlink" title="1. PROD2 is corrupted(Implicit subject)"></a>1. <strong>PROD2 is corrupted(Implicit subject)</strong></h3><h4 id="1-1-Redo-log-is-deleted"><a href="#1-1-Redo-log-is-deleted" class="headerlink" title="1.1 Redo log is deleted."></a>1.1 Redo log is deleted.</h4><h4 id="1-2-The-datafile-in-the-tablespace-of-users-is-deleted"><a href="#1-2-The-datafile-in-the-tablespace-of-users-is-deleted" class="headerlink" title="1.2 The datafile in the tablespace of users is deleted."></a>1.2 The datafile in the tablespace of users is deleted.</h4><p>rman target / catalog rcowner/rc@PROD4<br>list failure;<br>advise failure;<br>repair failure;</p>
+<h3 id="2-Create-DBLINK"><a href="#2-Create-DBLINK" class="headerlink" title="2. Create DBLINK"></a>2. <strong>Create DBLINK</strong></h3><h4 id="2-1-Create-DBLINK-should-query-on-the-PROD2-database-all-the-table-under-the-system-user-in-the-PROD1-Database"><a href="#2-1-Create-DBLINK-should-query-on-the-PROD2-database-all-the-table-under-the-system-user-in-the-PROD1-Database" class="headerlink" title="2.1 Create DBLINK, should query on the PROD2 database all the table under the system user in the PROD1 Database."></a>2.1 Create DBLINK, should query on the PROD2 database all the table under the system user in the PROD1 Database.</h4><p>create database link prod2_l connect to system identified by oracle using ‘prod2’;</p>
+<h3 id="3-Manage-Materialized-Views-to-improve-rewrite-and-refresh-performance"><a href="#3-Manage-Materialized-Views-to-improve-rewrite-and-refresh-performance" class="headerlink" title="3. Manage Materialized Views to improve rewrite and refresh performance"></a>3. <strong>Manage Materialized Views to improve rewrite and refresh performance</strong></h3><h4 id="3-1-Adjust-the-materialized-view-prod-cost-mv-statement-to-support-the-refresh-fast-and-query-rewrite"><a href="#3-1-Adjust-the-materialized-view-prod-cost-mv-statement-to-support-the-refresh-fast-and-query-rewrite" class="headerlink" title="3.1 Adjust the materialized view(prod_cost_mv) statement, to support the refresh fast and query rewrite"></a>3.1 Adjust the materialized view(prod_cost_mv) statement, to support the refresh fast and query rewrite</h4><p>alter user sh identified by sh account unlock;<br>select OWNER,MVIEW_NAME from dba_mviews where MVIEW_NAME=’PROD_COST_MV’;<br>set long 1000;<br>select QUERY from dba_mviews where MVIEW_NAME=’PROD_COST_MV’;<br>CREATE DIRECTORY TUNE_RESULTS AS  ‘/home/oracle/scripts’;<br>alter system set query_rewrite_enabled=true;</p>
+<ul>
+<li>使用dbms_advisor生成建视图的语句:<br>VARIABLE task_cust_mv VARCHAR2(30);<br>VARIABLE create_mv_ddl VARCHAR2(4000);<br>EXECUTE :task_cust_mv := ‘cust_mv’;<br>EXECUTE :create_mv_ddl := ‘CREATE MATERIALIZED VIEW cust_mv REFRESH FAST DISABLE QUERY REWRITE AS SELECT time_id, prod_subcategory,SUM( unit_cost) AS sum_units FROM sh.costs c, sh.products p WHERE c.prod_id = p.prod_id GROUP BY time_id, prod_subcategory’;<br>EXECUTE DBMS_ADVISOR.TUNE_MVIEW(:task_cust_mv, :create_mv_ddl);<br>set pagesize 50;<br>SELECT STATEMENT FROM DBA_TUNE_MVIEW WHERE TASK_NAME=’cust_mv’;<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">CREATE MATERIALIZED VIEW LOG ON &quot;SH&quot;.&quot;COSTS&quot; WITH ROWID, SEQUENCE (&quot;PROD_ID&quot;,&quot;TI</div><div class="line">ME_ID&quot;,&quot;UNIT_COST&quot;)  INCLUDING NEW VALUES</div><div class="line"></div><div class="line">ALTER MATERIALIZED VIEW LOG FORCE ON &quot;SH&quot;.&quot;COSTS&quot; ADD ROWID, SEQUENCE (&quot;PROD_ID&quot;</div><div class="line">,&quot;TIME_ID&quot;,&quot;UNIT_COST&quot;)  INCLUDING NEW VALUES</div><div class="line"></div><div class="line">CREATE MATERIALIZED VIEW LOG ON &quot;SH&quot;.&quot;PRODUCTS&quot; WITH ROWID, SEQUENCE (&quot;PROD_ID&quot;,</div><div class="line">&quot;PROD_SUBCATEGORY&quot;)  INCLUDING NEW VALUES</div><div class="line"></div><div class="line">ALTER MATERIALIZED VIEW LOG FORCE ON &quot;SH&quot;.&quot;PRODUCTS&quot; ADD ROWID, SEQUENCE (&quot;PROD_</div><div class="line">ID&quot;,&quot;PROD_SUBCATEGORY&quot;)  INCLUDING NEW VALUES</div><div class="line"></div><div class="line">CREATE MATERIALIZED VIEW SYS.CUST_MV   REFRESH FAST WITH ROWID DISABLE QUERY REW</div><div class="line">RITE AS SELECT SH.PRODUCTS.PROD_SUBCATEGORY C1, SH.COSTS.TIME_ID C2, SUM(&quot;SH&quot;.&quot;C</div><div class="line">OSTS&quot;.&quot;UNIT_COST&quot;) M1, COUNT(&quot;SH&quot;.&quot;COSTS&quot;.&quot;UNIT_COST&quot;) M2, COUNT(*) M3 FROM SH.P</div><div class="line">RODUCTS, SH.COSTS WHERE SH.COSTS.PROD_ID = SH.PRODUCTS.PROD_ID GROUP BY SH.PRODU</div><div class="line">CTS.PROD_SUBCATEGORY, SH.COSTS.TIME_ID</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>DROP MATERIALIZED VIEW SH.PROD_COST_MV;<br>vi mv_create.sql<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">CREATE MATERIALIZED VIEW LOG ON</div><div class="line">    &quot;SH&quot;.&quot;COSTS&quot;</div><div class="line">    WITH ROWID, SEQUENCE(&quot;PROD_ID&quot;,&quot;TIME_ID&quot;,&quot;UNIT_COST&quot;)</div><div class="line">    INCLUDING NEW VALUES;</div><div class="line">ALTER MATERIALIZED VIEW LOG FORCE ON</div><div class="line">    &quot;SH&quot;.&quot;COSTS&quot;</div><div class="line">    ADD ROWID, SEQUENCE(&quot;PROD_ID&quot;,&quot;TIME_ID&quot;,&quot;UNIT_COST&quot;)</div><div class="line">    INCLUDING NEW VALUES;</div><div class="line">CREATE MATERIALIZED VIEW LOG ON</div><div class="line">    &quot;SH&quot;.&quot;PRODUCTS&quot;</div><div class="line">    WITH ROWID, SEQUENCE(&quot;PROD_ID&quot;,&quot;PROD_SUBCATEGORY&quot;)</div><div class="line">    INCLUDING NEW VALUES;</div><div class="line">ALTER MATERIALIZED VIEW LOG FORCE ON</div><div class="line">    &quot;SH&quot;.&quot;PRODUCTS&quot;</div><div class="line">    ADD ROWID, SEQUENCE(&quot;PROD_ID&quot;,&quot;PROD_SUBCATEGORY&quot;)</div><div class="line">    INCLUDING NEW VALUES;</div><div class="line">CREATE MATERIALIZED VIEW sh.prod_cost_mv</div><div class="line">    REFRESH FAST WITH ROWID</div><div class="line">    ENABLE QUERY REWRITE</div><div class="line">    AS SELECT SH.PRODUCTS.PROD_SUBCATEGORY C1, SH.COSTS.TIME_ID C2, SUM(&quot;SH&quot;.&quot;COSTS&quot;.&quot;UNIT_COST&quot;)</div><div class="line">       M1, COUNT(&quot;SH&quot;.&quot;COSTS&quot;.&quot;UNIT_COST&quot;) M2, COUNT(*) M3 FROM SH.PRODUCTS,</div><div class="line">       SH.COSTS WHERE SH.COSTS.PROD_ID = SH.PRODUCTS.PROD_ID GROUP BY SH.PRODUCTS.PROD_SUBCATEGORY,</div><div class="line">       SH.COSTS.TIME_ID;</div></pre></td></tr></table></figure></p>
+<p>@mv_create.sql</p>
+<ul>
+<li>查询重写验证：<br>conn sh/sh<br>explain plan for select c.time_id,p.prod_subcategory,SUM(unit_cost) as sum_units FROM costs c,products p where c.prod_id=p.prod_id group by time_id, prod_subcategory;<br>select * from table(dbms_xplan.display);</li>
+<li>快速刷新验证：<br>select <em> from sh.prod_cost_mv where C2=to_date(‘1998-01-08,00:00:00’,’yyyy-mm-dd hh24:mi:ss’);<br>insert into costs values(18,to_date(‘1998-01-08 00:00:00’,’yyyy-mm-dd hh24:mi:ss’),999,3,1149.17,1639.39);<br>commit;<br>exec dbms_mview.refresh(‘PROD_COST_MV’,’F’);<br>select </em> from sh.prod_cost_mv where C2=to_date(‘1998-01-08,00:00:00’,’yyyy-mm-dd hh24:mi:ss’);<br>delete from costs where prod_id=18 and time_id=to_date(‘1998-01-08,00:00:00’,’yyyy-mm-dd hh24:mi:ss’) AND UNIT_PRICE=1639.39;<br>commit;<br>select <em> from sh.prod_cost_mv where C2=to_date(‘1998-01-08,00:00:00’,’yyyy-mm-dd hh24:mi:ss’);<br>exec dbms_mview.refresh(‘PROD_COST_MV’,’F’);<br>select </em> from sh.prod_cost_mv where C2=to_date(‘1998-01-08,00:00:00’,’yyyy-mm-dd hh24:mi:ss’);</li>
+<li>使用oem生成建视图的语句:<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-10-30/25324.jpg" alt="物化视图" title="">
+                </div>
+                <div class="image-caption">物化视图</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-10-30/19934659.jpg" alt="生成DDL" title="">
+                </div>
+                <div class="image-caption">生成DDL</div>
+            </figure>
+create materialized view log on sh.products with sequence,rowid(prod_subcategory,prod_id) including new values;<br>create materialized view log on sh.costs with sequence,rowid(time_id,prod_id,unit_cost) including new values;<br>create materialized view sh.prod_cost_mv tablespace users refresh fast on demand enable query rewrite as select time_id, prod_subcategory,SUM( unit_cost) AS sum_units FROM costs c, products p WHERE c.prod_id = p.prod_id GROUP BY time_id, prod_subcategory;</li>
+</ul>
+<h3 id="4-Manage-Transport-of-tablespaces-across-platforms-管理员手册-第十四章部分-OLTP-USER-考试时SLT用户"><a href="#4-Manage-Transport-of-tablespaces-across-platforms-管理员手册-第十四章部分-OLTP-USER-考试时SLT用户" class="headerlink" title="4. Manage Transport of tablespaces across platforms 管理员手册 第十四章部分 OLTP_USER 考试时SLT用户"></a>4. <strong>Manage Transport of tablespaces across platforms</strong> 管理员手册 第十四章部分 OLTP_USER 考试时SLT用户</h3><h4 id="4-1-Add-a-tablespace-by-using-Transportable-Feature-of-Data-Pump-Import-platform-transportable-tablespace"><a href="#4-1-Add-a-tablespace-by-using-Transportable-Feature-of-Data-Pump-Import-platform-transportable-tablespace" class="headerlink" title="4.1. Add a tablespace by using Transportable Feature of Data Pump Import (platform transportable tablespace)"></a>4.1. Add a tablespace by using Transportable Feature of Data Pump Import (platform transportable tablespace)</h4><h4 id="4-2-A-dump-file-export-from-solaris-platform-and-transfer-tablespace-to-PROD1"><a href="#4-2-A-dump-file-export-from-solaris-platform-and-transfer-tablespace-to-PROD1" class="headerlink" title="4.2. A dump file export from solaris platform and transfer tablespace to PROD1"></a>4.2. A dump file export from solaris platform and transfer tablespace to PROD1</h4><h4 id="4-3-All-dumpfiles-and-datafile-are-under-home-oracle-scripts-directory"><a href="#4-3-All-dumpfiles-and-datafile-are-under-home-oracle-scripts-directory" class="headerlink" title="4.3. All dumpfiles and datafile are under /home/oracle/scripts directory"></a>4.3. All dumpfiles and datafile are under /home/oracle/scripts directory</h4><p>(/home/oacle/scripts/transport_tbs01.dbf,/home/oracle/scripts/EXPDAT_GENERATETTS000021.DMP)<br>select PLATFORM_NAME from v$database;<br>rman target /<br>RMAN&gt; CONVERT DATAFILE ‘/home/oracle/scripts/transport_tbs01.dbf’ TO PLATFORM=”Linux IA (32-bit)” FROM PLATFORM=”Solaris[tm] OE (32-bit)” DB_FILE_NAME_CONVERT=’/home/oracle/scripts/‘, ‘/u01/app/oracle/oradata/PROD1/‘ PARALLELISM=4;<br>select <em> from dba_directories;<br>create or replace directory DATA_PUMP_DIR as ‘/home/oracle/scripts’;<br>create user TRANS_USER identified by oracle;<br>grant connect,resource to TRANS_USER;<br>impdp system DUMPFILE=EXPDAT_GENERATETTS000021.DMP DIRECTORY=data_pump_dir TRANSPORT_DATAFILES=/u01/app/oracle/oradata/PROD1/transport_tbs01.dbf LOGFILE=tts_import.log<br>alter tablespace TRANS_TBS read write;<br>select name from v$tablespace;<br>conn TRANS_USER/oracle<br>select </em> from tab;</p>
+<h3 id="5-Configure-a-schema-to-support-a-star-transformation-query-home-oracle-scripts-star-sql"><a href="#5-Configure-a-schema-to-support-a-star-transformation-query-home-oracle-scripts-star-sql" class="headerlink" title="5. Configure a schema to support a star transformation query (/home/oracle/scripts/star.sql)"></a>5. <strong>Configure a schema to support a star transformation query (/home/oracle/scripts/star.sql)</strong></h3><p>alter user sh identified by sh account unlock;<br>show parameter star<br>alter system set star_transformation_enabled = true;<br>conn sh/sh<br>desc sales<br>create bitmap index sales_cust_bix on sales(cust_id) local;<br>create bitmap index sales_time_bix on sales(time_id) local;<br>create bitmap index sales_chan_bix on sales(channel_id) local;<br>set autot trace exp<br>@/home/oracle/scripts/star.sql<br>set autot off</p>
+<h3 id="6-Administer-external-tables"><a href="#6-Administer-external-tables" class="headerlink" title="6. Administer external tables"></a>6. <strong>Administer external tables</strong></h3><h4 id="6-1-Provides-the-control-file-home-oracle-scripts-prod-master-ctl-and-data-file-home-oracle-scripts-prod-master-dat-gz-requires-that-creation-an-external-table-in-SH"><a href="#6-1-Provides-the-control-file-home-oracle-scripts-prod-master-ctl-and-data-file-home-oracle-scripts-prod-master-dat-gz-requires-that-creation-an-external-table-in-SH" class="headerlink" title="6.1 Provides the control file(/home/oracle/scripts/prod_master.ctl) and data file (/home/oracle/scripts/prod_master.dat.gz),requires that creation an external table in SH"></a>6.1 Provides the control file(/home/oracle/scripts/prod_master.ctl) and data file (/home/oracle/scripts/prod_master.dat.gz),requires that creation an external table in SH</h4><p>create table sh.prod_master as select <em> from hr.prod_master;<br>vi /home/oracle/scripts/prod_master.ctl:注释掉预处理：PREPROCESSOR,将hr.prod_master修改为sh.prod_master<br>sqlldr userid=sh/sh control=prod_master.ctl external_table=GENERATE_ONLY log=extent_tab.log<br>vi /home/oracle/scripts/extent_tab.log:将建表语句保存为cet.sql,表名两边不加引号,表名前增加’SH.’,增加PREPROCESSOR ‘SYS_SQLLDR_XT_TMPDIR_00000’:’uncompress.sh’ 最后加上’;’<br>create directory SYS_SQLLDR_XT_TMPDIR_00000 AS ‘/home/oracle/scripts/‘;<br>@ceb.sql<br>select </em> from sh.SYS_SQLLDR_X_EXT_PROD_MASTER;</p>
+<h3 id="7-Configure-and-use-parallel-EXECution-for-queries"><a href="#7-Configure-and-use-parallel-EXECution-for-queries" class="headerlink" title="7. Configure and use parallel EXECution for queries"></a>7. <strong>Configure and use parallel EXECution for queries</strong></h3><h4 id="7-1-Requirements-for-maximum-parallel-slaves-is-100-Permanent-slave-of-minimum-number-is-10"><a href="#7-1-Requirements-for-maximum-parallel-slaves-is-100-Permanent-slave-of-minimum-number-is-10" class="headerlink" title="7.1. Requirements for maximum parallel slaves is 100, Permanent slave of minimum number is 10%."></a>7.1. Requirements for maximum parallel slaves is 100, Permanent slave of minimum number is 10%.</h4><p>alter system set parallel_max_servers=100;<br>alter system set parallel_min_percent=10 scope=spfile;</p>
+<h4 id="7-2-Require-all-SQL-using-parallel-cannot-execute-in-parallel-operation-the-operation-was-aborted"><a href="#7-2-Require-all-SQL-using-parallel-cannot-execute-in-parallel-operation-the-operation-was-aborted" class="headerlink" title="7.2. Require all SQL using parallel, cannot execute in parallel operation, the operation was aborted."></a>7.2. Require all SQL using parallel, cannot execute in parallel operation, the operation was aborted.</h4><p>alter system set parallel_degree_policy=limited;</p>
+<h4 id="7-3-Set-the-table-sh-sales-parallel-degree-of-8-to-ensure-that-the-entire-scene-with-the-parallel-degree"><a href="#7-3-Set-the-table-sh-sales-parallel-degree-of-8-to-ensure-that-the-entire-scene-with-the-parallel-degree" class="headerlink" title="7.3. Set the table sh.sales parallel degree of 8, to ensure that the entire scene with the parallel degree."></a>7.3. Set the table sh.sales parallel degree of 8, to ensure that the entire scene with the parallel degree.</h4><p>alter table sh.sales parallel 8;<br>alter session enable parallel dml;</p>
+<h4 id="7-4-The-running-time-of-less-than-5-seconds-should-not-use-parallel"><a href="#7-4-The-running-time-of-less-than-5-seconds-should-not-use-parallel" class="headerlink" title="7.4. The running time of less than 5 seconds, should not use parallel."></a>7.4. The running time of less than 5 seconds, should not use parallel.</h4><p>alter system set parallel_min_time_threshold=5;</p>
+<h4 id="7-5-Provides-a-script-home-oracle-scripts-parallel-sql-modify-the-script-and-execution-that-using-the-sys-user-the-SQL-statement-which-run-the-parallel-execution-plan-into-the-plan-table"><a href="#7-5-Provides-a-script-home-oracle-scripts-parallel-sql-modify-the-script-and-execution-that-using-the-sys-user-the-SQL-statement-which-run-the-parallel-execution-plan-into-the-plan-table" class="headerlink" title="7.5. Provides a script (/home/oracle/scripts/parallel.sql), modify the script and execution that using the sys user, the SQL statement which run the parallel, execution plan into the plan_table."></a>7.5. Provides a script (/home/oracle/scripts/parallel.sql), modify the script and execution that using the sys user, the SQL statement which run the parallel, execution plan into the plan_table.</h4><p>@?/rdbms/admin/utlxplan.sql<br>vi parallel.sql：<br>在最开始添加：<br>alter session enable parallel dml<br>/<br>在update后添加：/<em>+ parallel</em>/<br>@/home/oracle/scripts/parallel.sql</p>
+]]></content>
+    
+    <summary type="html">
+    
+      ocm11g认证考试
+    
+    </summary>
+    
+      <category term="学习笔记" scheme="https://aliennever.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="oracle" scheme="https://aliennever.github.io/tags/oracle/"/>
+    
+  </entry>
+  
+  <entry>
     <title>11gOCM-Skillset2</title>
-    <link href="https://aliennever.github.io/2018/09/05/06-20180827OCM%20Skillset2/"/>
-    <id>https://aliennever.github.io/2018/09/05/06-20180827OCM Skillset2/</id>
+    <link href="https://aliennever.github.io/2018/09/05/20180827OCM%20Skillset2/"/>
+    <id>https://aliennever.github.io/2018/09/05/20180827OCM Skillset2/</id>
     <published>2018-09-05T04:00:00.000Z</published>
-    <updated>2018-10-25T09:22:27.765Z</updated>
+    <updated>2018-10-25T09:23:07.092Z</updated>
     
     <content type="html"><![CDATA[<h1 id="Skillset-2"><a href="#Skillset-2" class="headerlink" title="Skillset 2"></a>Skillset 2</h1><h2 id="TASKS"><a href="#TASKS" class="headerlink" title="TASKS:"></a>TASKS:</h2><h3 id="1-Register-the-PROD1、PROD2-database-with-the-catalog-on-prod4"><a href="#1-Register-the-PROD1、PROD2-database-with-the-catalog-on-prod4" class="headerlink" title="1. Register the PROD1、PROD2 database with the catalog on prod4"></a>1. <strong>Register the PROD1、PROD2 database with the catalog on prod4</strong></h3><pre><code>export ORACLE_SID=PROD4
 sqlplus / as sysdba
@@ -94,8 +152,8 @@ select * from hr.regions;
   
   <entry>
     <title>11gOCM-Skillset1</title>
-    <link href="https://aliennever.github.io/2018/07/03/05-20180710OCM%20Skillset1/"/>
-    <id>https://aliennever.github.io/2018/07/03/05-20180710OCM Skillset1/</id>
+    <link href="https://aliennever.github.io/2018/07/03/20180710OCM%20Skillset1/"/>
+    <id>https://aliennever.github.io/2018/07/03/20180710OCM Skillset1/</id>
     <published>2018-07-03T04:00:00.000Z</published>
     <updated>2018-10-25T09:20:42.236Z</updated>
     
@@ -222,8 +280,8 @@ https://localhost:1158/em/
   
   <entry>
     <title>Weblogic安装补丁</title>
-    <link href="https://aliennever.github.io/2018/04/20/04-20180420/"/>
-    <id>https://aliennever.github.io/2018/04/20/04-20180420/</id>
+    <link href="https://aliennever.github.io/2018/04/20/20180420-Weblogic%E5%AE%89%E8%A3%85%E8%A1%A5%E4%B8%81/"/>
+    <id>https://aliennever.github.io/2018/04/20/20180420-Weblogic安装补丁/</id>
     <published>2018-04-20T04:00:00.000Z</published>
     <updated>2018-09-05T02:13:05.221Z</updated>
     
@@ -272,8 +330,8 @@ https://localhost:1158/em/
   
   <entry>
     <title>Oracle11g最小静默安装</title>
-    <link href="https://aliennever.github.io/2018/03/05/03-20180305/"/>
-    <id>https://aliennever.github.io/2018/03/05/03-20180305/</id>
+    <link href="https://aliennever.github.io/2018/03/05/20180305-Oracle11g%E6%9C%80%E5%B0%8F%E9%9D%99%E9%BB%98%E5%AE%89%E8%A3%85/"/>
+    <id>https://aliennever.github.io/2018/03/05/20180305-Oracle11g最小静默安装/</id>
     <published>2018-03-05T04:00:00.000Z</published>
     <updated>2018-03-12T00:50:46.290Z</updated>
     
@@ -359,8 +417,8 @@ https://localhost:1158/em/
   
   <entry>
     <title>Linux虚拟机安装</title>
-    <link href="https://aliennever.github.io/2018/03/01/02-20180301/"/>
-    <id>https://aliennever.github.io/2018/03/01/02-20180301/</id>
+    <link href="https://aliennever.github.io/2018/03/01/20180301-Linux%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85/"/>
+    <id>https://aliennever.github.io/2018/03/01/20180301-Linux虚拟机安装/</id>
     <published>2018-03-01T04:00:00.000Z</published>
     <updated>2018-07-03T08:37:49.426Z</updated>
     
@@ -418,8 +476,8 @@ https://localhost:1158/em/
   
   <entry>
     <title>weblogic集群配置</title>
-    <link href="https://aliennever.github.io/2018/02/26/01-20180226/"/>
-    <id>https://aliennever.github.io/2018/02/26/01-20180226/</id>
+    <link href="https://aliennever.github.io/2018/02/26/20180226-weblogic%E9%9B%86%E7%BE%A4%E9%85%8D%E7%BD%AE/"/>
+    <id>https://aliennever.github.io/2018/02/26/20180226-weblogic集群配置/</id>
     <published>2018-02-26T04:00:00.000Z</published>
     <updated>2018-03-01T00:45:24.983Z</updated>
     

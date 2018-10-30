@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>Oracle11g最小静默安装 | Alien | 有梦不觉人生寒,有爱不觉天涯远</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="oracle">
+    <meta name="description" content="oracle学习">
+<meta name="keywords" content="oracle">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Oracle11g最小静默安装">
+<meta property="og:url" content="https://aliennever.github.io/2018/03/05/20180305-Oracle11g最小静默安装/index.html">
+<meta property="og:site_name" content="Alien">
+<meta property="og:description" content="oracle学习">
+<meta property="og:updated_time" content="2018-03-12T00:50:46.290Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Oracle11g最小静默安装">
+<meta name="twitter:description" content="oracle学习">
+    
+        <link rel="alternate" type="application/atom+xml" title="Alien" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/Alien.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">LG</h5>
+          <a href="mailto:76229074@qq.com" title="76229074@qq.com" class="mail">76229074@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/AlienNever" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/u/1515645385" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Oracle11g最小静默安装</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Oracle11g最小静默安装</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-03-05T04:00:00.000Z" itemprop="datePublished" class="page-time">
+  2018-03-05
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/学习笔记/">学习笔记</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#前期准备"><span class="post-toc-number">1.</span> <span class="post-toc-text">前期准备</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#安装数据库"><span class="post-toc-number">2.</span> <span class="post-toc-text">安装数据库</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-20180305-Oracle11g最小静默安装"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Oracle11g最小静默安装</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-03-05 12:00:00" datetime="2018-03-05T04:00:00.000Z"  itemprop="datePublished">2018-03-05</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/学习笔记/">学习笔记</a></li></ul>
+
+
+
+            
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h1><hr>
+<ol>
+<li>软件环境：<ul>
+<li>VM虚拟机：redhat Linux </li>
+<li>oracle11g安装包</li>
+<li>单机环境需要准备所需依赖包packages</li>
+</ul>
+</li>
+<li>单机环境安装net-tools和unzip：<ul>
+<li>配置本地yum源<ol>
+<li>打开VMware,在CD/DVD设置选项中，将Redhat7镜像文件放入CD/DVD中</li>
+<li>将虚拟光驱挂载到 /mnt 文件夹下 （确保虚拟光驱处于链接状态）<code>mount /dev/sr0 /mnt</code></li>
+<li>/mnt/Packages下安装net-tools和unzip包 <code>rpm -ivh net-tools</code></li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>若修改主机名则在在/etc/hosts文件中添加主机名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">vi /etc/sysconfig/network</div><div class="line">HOSTNAME=Alien</div><div class="line">vi /etc/hosts</div><div class="line">127.0.0.1      localhost.localdomain localhost linuxhostname Alien</div></pre></td></tr></table></figure>
+</li>
+<li><p>修改内核参数文件/etc/sysctl.conf:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">fs.aio-max-nr = 1048576</div><div class="line">fs.file-max = 6815744</div><div class="line">kernel.shmall = 2097152</div><div class="line">kernel.shmmax = 536870912</div><div class="line">kernel.shmmni = 4096</div><div class="line">kernel.sem = 250 32000 100 128</div><div class="line">net.ipv4.ip_local_port_range = 9000 65500</div><div class="line">net.core.rmem_default = 262144</div><div class="line">net.core.rmem_max = 4194304</div><div class="line">net.core.wmem_default = 262144</div><div class="line">net.core.wmem_max = 1048586</div></pre></td></tr></table></figure>
+</li>
+<li><p>修改用户的限制文件/etc/security/limits.conf:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">oracle    soft    nproc    2047</div><div class="line">oracle    hard    nproc    16384</div><div class="line">oracle    soft    nofile    1024</div><div class="line">oracle    hard    nofile    65536</div><div class="line">oracle    soft    stack    10240</div></pre></td></tr></table></figure>
+</li>
+<li><p>单机环境通过FTP工具上传并安装依赖包packages <code>rpm -Uvh * --nodeps</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum -y install binutils compat-libcap1 compat-libstdc++-33  elfutils-libelf elfutils-libelf-devel gcc gcc-c++ glibc glibc-common glibc-devel glibc-headers ksh libaio libaio-devel libgcc libstdc++ libstdc++-devel libXi libXtst make sysstat unixODBC unixODBC-devel</div></pre></td></tr></table></figure>
+</li>
+<li><p>创建Oracle用户和相应的属组</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">groupadd oinstall</div><div class="line">groupadd dba</div><div class="line">useradd -g oinstall -G dba oracle</div><div class="line">passwd oracle</div></pre></td></tr></table></figure>
+</li>
+<li><p>切换到oracle用户创建目录修改属组和权限</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mkdir -p /home/oracle/oracle11g/base         #基目录</div><div class="line">mkdir -p /home/oracle/oracle11g/base/home    #家目录</div><div class="line">mkdir -p /home/oracle/oracle11g/oraInventory    #清单目录</div></pre></td></tr></table></figure>
+</li>
+<li><p>配置oracle用户的环境变量，编辑  ~/.bash_profile：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">export ORACLE_BASE=/home/oracle/oracle11g/base</div><div class="line">export ORACLE_HOME=$ORACLE_BASE/home </div><div class="line">export ORACLE_SID=orcl</div><div class="line">export PATH=$ORACLE_HOME/bin:$PATH:$HOME/bin </div><div class="line">export TNS_ADMIN=$ORACLE_HOME/network/admin </div><div class="line">export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ORACLE_HOME/lib</div></pre></td></tr></table></figure>
+</li>
+<li><p>上传oracle11g安装包并解压</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">unzip p13390677_112040_Linux-x86-64_1of7.zip </div><div class="line">unzip p13390677_112040_Linux-x86-64_2of7.zip</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<hr>
+<h1 id="安装数据库"><a href="#安装数据库" class="headerlink" title="安装数据库"></a>安装数据库</h1><hr>
+<ol>
+<li><p>修改静默安装响应文件/home/oracle/database/response/db_install.rsp:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">oracle.install.option=INSTALL_DB_SWONLY </div><div class="line">ORACLE_HOSTNAME=Alien</div><div class="line">UNIX_GROUP_NAME=oinstall</div><div class="line">INVENTORY_LOCATION=/home/oracle/oracle11g/oraInventory</div><div class="line">SELECTED_LANGUAGES=en,zh_CN</div><div class="line">ORACLE_HOME=/home/oracle/oracle11g/base/home</div><div class="line">ORACLE_BASE=/home/oracle/oracle11g/base</div><div class="line">oracle.install.db.InstallEdition=EE</div><div class="line">oracle.install.db.isCustomInstall=false</div><div class="line">oracle.install.db.DBA_GROUP=dba</div><div class="line">oracle.install.db.OPER_GROUP=oinstall</div><div class="line">DECLINE_SECURITY_UPDATES=true</div></pre></td></tr></table></figure>
+</li>
+<li><p>启动静默安装程序<br><code>./runInstaller -silent -ignorePrereq -responseFile /home/oracle/database/response/db_install.rsp</code></p>
+</li>
+<li><p>配置oracle监听<br><code>./netca /silent /responsefile /home/oracle/database/response/netca.rsp</code></p>
+<ul>
+<li><p>若启动报错</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Oracle Net Services 配置:</div><div class="line"> An unexpected error has been detected by HotSpot Virtual Machine:</div><div class="line"> SIGSEGV (0xb) at pc=0x00007f2ad35f0b9d, pid=22693, tid=139822952867648</div><div class="line"> Java VM: Java HotSpot(TM) 64-Bit Server VM (1.5.0_17-b03 mixed mode)</div><div class="line"> Problematic frame:</div><div class="line"> C  [libclntsh.so.11.1+0x62ab9d]  snlinGetAddrInfo+0x1b1</div><div class="line"> An error report file with more information is saved as hs_err_pid22693.log</div><div class="line"> If you would like to submit a bug report, please visit:</div><div class="line"> http://java.sun.com/webapps/bugreport/crash.jsp</div><div class="line"> ./netca: 行 178: 22693 已放弃          $JRE $JRE_OPTIONS -classpath $CLASSPATH oracle.net.ca.NetCA $*</div></pre></td></tr></table></figure>
+</li>
+<li><p>尝试修改主机名：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">vi /etc/sysconfig/network</div><div class="line">HOSTNAME=Alien</div><div class="line">vi /etc/hosts</div><div class="line">127.0.0.1      localhost.localdomain localhost linuxhostname Alien</div></pre></td></tr></table></figure>
+</li>
+<li><p>查看监听器状态：<code>lsnrctl status</code></p>
+</li>
+</ul>
+</li>
+<li><p>静默创建数据库:<br><code>./dbca -silent -responseFile /home/oracle/database/response/dbca.rsp</code><br>建库后实例检查：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ps -ef | grep ora_ | grep -v grep | wc -l</div><div class="line">ps -ef | grep ora_ | grep -v grep</div></pre></td></tr></table></figure></li>
+</ol>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2018-03-12T00:50:46.290Z" itemprop="dateUpdated">2018-03-12 08:50:46</time>
+</span><br>
+
+
+        
+    </div>
+    <footer>
+        <a href="https://aliennever.github.io">
+            <img src="/img/Alien.jpg" alt="LG">
+            LG
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/oracle/">oracle</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://aliennever.github.io/2018/03/05/20180305-Oracle11g最小静默安装/&title=《Oracle11g最小静默安装》 — Alien&pic=https://aliennever.github.io/img/Alien.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://aliennever.github.io/2018/03/05/20180305-Oracle11g最小静默安装/&title=《Oracle11g最小静默安装》 — Alien&source=终有一天，大器晚成" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://aliennever.github.io/2018/03/05/20180305-Oracle11g最小静默安装/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Oracle11g最小静默安装》 — Alien&url=https://aliennever.github.io/2018/03/05/20180305-Oracle11g最小静默安装/&via=https://aliennever.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://aliennever.github.io/2018/03/05/20180305-Oracle11g最小静默安装/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/03/01/20180301-Linux虚拟机安装/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Linux虚拟机安装</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/04/20/20180420-Weblogic安装补丁/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Weblogic安装补丁</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://aliennever.github.io/2018/03/05/20180305-Oracle11g最小静默安装/&title=《Oracle11g最小静默安装》 — Alien&pic=https://aliennever.github.io/img/Alien.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://aliennever.github.io/2018/03/05/20180305-Oracle11g最小静默安装/&title=《Oracle11g最小静默安装》 — Alien&source=终有一天，大器晚成" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://aliennever.github.io/2018/03/05/20180305-Oracle11g最小静默安装/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Oracle11g最小静默安装》 — Alien&url=https://aliennever.github.io/2018/03/05/20180305-Oracle11g最小静默安装/&via=https://aliennever.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://aliennever.github.io/2018/03/05/20180305-Oracle11g最小静默安装/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACwElEQVR42u3aS3IbMQwFQN//0s46ZX3eA8jIqepZqUYaDpsLEgLw9RVf3z+u/KnX939+fvau/L31hYeHh7ee+rOhX99/dif/5bOn8oV4sAR4eHh413j59p1MN7k/GyefMx4eHt7v4eUTzePbNkDHw8PD+794CTjZ1pMj4cPnHh4eHt5L3iyFOgud86fydx3IteDh4eHFvE04+6nPV+p7eHh4eOuq+qmUQVtgSxLH0ch4eHh4F3j5htsG3G143eKTeeLh4eHd4yXphtdp3M1R0YbUw+AbDw8P7xpvn8/Iw/G2+SAvyDUnBh4eHt6EN2sLyKeYj58fQkXYjYeHh3eUN2tpSrbvs5t7skDDqh0eHh5eyUsmlydh23TD5ghpx8HDw8O7wWtD2zaY3kwuSZS8+Q0eHh7eIV6+uc9Ssfm3M9KbN+Lh4eFd4M2aA5I2qTYEb5c1D7vx8PDwzvL2L2vD6Papdmn++oyHh4d3jdcWrtq076zwNiuGNQciHh4e3pzXlvPb5oBZgjhf+uK/Ah4eHt4hXrTJLgLo5HjYtGe9SUbg4eHhHeVtilh5Q0BbBtt8+0CEh4eHd5nXhst5wiIPl4+F1Hh4eHiXeW07VJ6q+C6vtqHhDR4PDw/vAm8WzrYJ3OT+rPAWld/w8PDwLvA26YY2LbtvvcoXFA8PD+8GL2+BylO6m6aETflt1eGFh4eHV/L2G3Q7Qh4orxoR8PDw8C7z2tJXMtHZRr+BPQip8fDw8A7xZqWpPAWcB+t5s1ce3OPh4eHd4LWbb9s00E5usyibowUPDw+v5bXb+j4gnrUO5AuEh4eH9294bQIib5OaBevtYr05GPDw8PA+ymtfdqqVanZg4OHh4f0GXptCbdMW7aHyZjQ8PDy8a7y2rSpPMeSM5BC6mGvBw8PDm+/GdaA8q63lKYlT7Vl4eHh4a94few9zqCkXuzAAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
