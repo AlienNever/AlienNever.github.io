@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://aliennever.github.io/"/>
-  <updated>2018-11-06T07:16:01.551Z</updated>
+  <updated>2018-11-13T09:20:35.045Z</updated>
   <id>https://aliennever.github.io/</id>
   
   <author>
@@ -14,6 +14,170 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>11gOCM-Skillset6</title>
+    <link href="https://aliennever.github.io/2018/11/06/20181113OCM%20Skillset6/"/>
+    <id>https://aliennever.github.io/2018/11/06/20181113OCM Skillset6/</id>
+    <published>2018-11-06T04:00:00.000Z</published>
+    <updated>2018-11-13T09:20:35.045Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Skillset-6"><a href="#Skillset-6" class="headerlink" title="Skillset 6"></a>Skillset 6</h1><h2 id="TASKS"><a href="#TASKS" class="headerlink" title="TASKS:"></a>TASKS:</h2><h3 id="1-Grid-Control-Installation"><a href="#1-Grid-Control-Installation" class="headerlink" title="1. Grid Control Installation"></a><strong>1. Grid Control Installation</strong></h3><h4 id="1-1-Deploy-an-Oracle-Management-Agent-on-your-Database-Server-management-password-is-Oracle123"><a href="#1-1-Deploy-an-Oracle-Management-Agent-on-your-Database-Server-management-password-is-Oracle123" class="headerlink" title="1.1 Deploy an Oracle Management Agent on your Database Server,management password is Oracle123."></a>1.1 Deploy an Oracle Management Agent on your Database Server,management password is Oracle123.</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">[oracle@edbjr2p2 linux]$ </div><div class="line">lsnrctl status</div><div class="line">export ORACLE_SID=PROD2</div><div class="line">sqlplus / as sysdba</div><div class="line">alter user dbsnmp identified by oracle account unlock;</div><div class="line">cd /u01/app/oracle/product/middleware/oms11g/bin</div><div class="line">./emctl status oms</div><div class="line">./emctl start oms</div><div class="line">cd /u01/app/oracle/product/middleware/oms11g/sysman/agent_download/11.1.0.1.0/linux</div><div class="line">scp agentDownload.linux edbjr2p1:~</div><div class="line">[oracle@edbjr2p1 ~]$ </div><div class="line">chmod 755 agentDownload.linux</div><div class="line">./agentDownload.linux -yb /u01/app/oracle</div><div class="line">su root</div><div class="line">/u01/app/oracle/agent11g/root.sh</div><div class="line">cd /u01/app/oracle/agent11g/bin</div><div class="line">./emctl status agent </div><div class="line">https://localhost:7799/em </div><div class="line">sys Oracle123</div></pre></td></tr></table></figure>
+<h4 id="1-2-Create-a-Grid-Control-super-user-called-EMADMIN-with-the-password-EMADMIN"><a href="#1-2-Create-a-Grid-Control-super-user-called-EMADMIN-with-the-password-EMADMIN" class="headerlink" title="1.2 Create a Grid Control super user called EMADMIN with the password EMADMIN."></a>1.2 Create a Grid Control super user called EMADMIN with the password EMADMIN.</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-13/7785751.jpg" alt="1-2-1" title="">
+                </div>
+                <div class="image-caption">1-2-1</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-13/3011756.jpg" alt="1-2-2" title="">
+                </div>
+                <div class="image-caption">1-2-2</div>
+            </figure>
+<h3 id="2-Using-Grid-Control"><a href="#2-Using-Grid-Control" class="headerlink" title="2. Using Grid Control"></a><strong>2. Using Grid Control</strong></h3><h4 id="2-1-Using-Grid-Control-change-the-PGA-AGGREGATE-TARGET-on-your-PROD1-server-to-500MB-so-that-it-will-persistant-when-the-instance-is-restarted"><a href="#2-1-Using-Grid-Control-change-the-PGA-AGGREGATE-TARGET-on-your-PROD1-server-to-500MB-so-that-it-will-persistant-when-the-instance-is-restarted" class="headerlink" title="2.1 Using Grid Control, change the PGA_AGGREGATE_TARGET on your PROD1 server to 500MB so that it will persistant when the instance is restarted."></a>2.1 Using Grid Control, change the PGA_AGGREGATE_TARGET on your PROD1 server to 500MB so that it will persistant when the instance is restarted.</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-13/57889558.jpg" alt="2-1-1" title="">
+                </div>
+                <div class="image-caption">2-1-1</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-13/43836180.jpg" alt="2-1-2" title="">
+                </div>
+                <div class="image-caption">2-1-2</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-13/29549786.jpg" alt="2-1-3" title="">
+                </div>
+                <div class="image-caption">2-1-3</div>
+            </figure>
+<h4 id="2-2-Using-Grid-Control-configure-the-instance-to-ensure-that-it-will-take-up-to-five-5-minutes-to-recover-your-instance-following-an-instance-failure"><a href="#2-2-Using-Grid-Control-configure-the-instance-to-ensure-that-it-will-take-up-to-five-5-minutes-to-recover-your-instance-following-an-instance-failure" class="headerlink" title="2.2 Using Grid Control, configure the instance to ensure that it will take up to five(5) minutes to recover your instance following an instance failure."></a>2.2 Using Grid Control, configure the instance to ensure that it will take up to five(5) minutes to recover your instance following an instance failure.</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-13/42656389.jpg" alt="2-2-1" title="">
+                </div>
+                <div class="image-caption">2-2-1</div>
+            </figure>
+<h4 id="2-3-Configure-an-alert-on-the-SYSTEM-tablespace-of-the-PROD1-database-The-alert-should-register-as-a-warning-at-87-and-critical-at-95-full"><a href="#2-3-Configure-an-alert-on-the-SYSTEM-tablespace-of-the-PROD1-database-The-alert-should-register-as-a-warning-at-87-and-critical-at-95-full" class="headerlink" title="2.3 Configure an alert on the SYSTEM tablespace of the PROD1 database. The alert should register as a warning at 87% and critical at 95% full."></a>2.3 Configure an alert on the SYSTEM tablespace of the PROD1 database. The alert should register as a warning at 87% and critical at 95% full.</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-13/70889540.jpg" alt="2-3-1" title="">
+                </div>
+                <div class="image-caption">2-3-1</div>
+            </figure>
+<h4 id="2-4-Setup-notifications-to-be-sent-to-the-email-address-‘dba-ocm-com’-Notification-messages-should-be-sent-to-this-address-at-anytime"><a href="#2-4-Setup-notifications-to-be-sent-to-the-email-address-‘dba-ocm-com’-Notification-messages-should-be-sent-to-this-address-at-anytime" class="headerlink" title="2.4 Setup notifications to be sent to the email address ‘dba@ocm.com’ Notification messages should be sent to this address at anytime."></a>2.4 Setup notifications to be sent to the email address ‘dba@ocm.com’ Notification messages should be sent to this address at anytime.</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-13/88414059.jpg" alt="2-4-1" title="">
+                </div>
+                <div class="image-caption">2-4-1</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-13/3684365.jpg" alt="2-4-2" title="">
+                </div>
+                <div class="image-caption">2-4-2</div>
+            </figure>
+<h4 id="2-5-Create-a-permanent-tablespace-REGISTRATION-local-management-tablespace-automatic-segment-space-management-Initial-datafile-size-of-90M-with-the-file-expected-to-grow-to-120M"><a href="#2-5-Create-a-permanent-tablespace-REGISTRATION-local-management-tablespace-automatic-segment-space-management-Initial-datafile-size-of-90M-with-the-file-expected-to-grow-to-120M" class="headerlink" title="2.5 Create a permanent tablespace REGISTRATION,local management tablespace,automatic segment space management Initial datafile size of 90M with the file expected to grow to 120M."></a>2.5 Create a permanent tablespace REGISTRATION,local management tablespace,automatic segment space management Initial datafile size of 90M with the file expected to grow to 120M.</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-13/7169401.jpg" alt="2-5-1" title="">
+                </div>
+                <div class="image-caption">2-5-1</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-13/14072548.jpg" alt="2-5-2" title="">
+                </div>
+                <div class="image-caption">2-5-2</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-13/39265839.jpg" alt="2-5-3" title="">
+                </div>
+                <div class="image-caption">2-5-3</div>
+            </figure>
+<h3 id="3-Implementing-Schedules-and-Jobs"><a href="#3-Implementing-Schedules-and-Jobs" class="headerlink" title="3. Implementing Schedules and Jobs"></a><strong>3. Implementing Schedules and Jobs</strong></h3><h4 id="3-1-Using-Grid-Control-create-a-schedule-for-the-PROD1-database"><a href="#3-1-Using-Grid-Control-create-a-schedule-for-the-PROD1-database" class="headerlink" title="3.1 Using Grid Control, create a schedule for the PROD1 database."></a>3.1 Using Grid Control, create a schedule for the PROD1 database.</h4><h5 id="3-1-1-Call-this-schedule-DAILYREBUILD"><a href="#3-1-1-Call-this-schedule-DAILYREBUILD" class="headerlink" title="3.1.1 Call this schedule DAILYREBUILD"></a>3.1.1 Call this schedule DAILYREBUILD</h5><h5 id="3-1-2-Configure-it-to-run-at-2PM-every-day"><a href="#3-1-2-Configure-it-to-run-at-2PM-every-day" class="headerlink" title="3.1.2 Configure it to run at 2PM every day"></a>3.1.2 Configure it to run at 2PM every day</h5><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-13/92166300.jpg" alt="3-1-1" title="">
+                </div>
+                <div class="image-caption">3-1-1</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-13/69386752.jpg" alt="3-1-2" title="">
+                </div>
+                <div class="image-caption">3-1-2</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-13/78298830.jpg" alt="3-1-3" title="">
+                </div>
+                <div class="image-caption">3-1-3</div>
+            </figure>
+<h4 id="3-2-Create-a-program-for-the-PROD1-database-called-EMP-IND-REBUILD-that-rebuilds-all-indexes-on-the-HR-EMPLOYEES-table"><a href="#3-2-Create-a-program-for-the-PROD1-database-called-EMP-IND-REBUILD-that-rebuilds-all-indexes-on-the-HR-EMPLOYEES-table" class="headerlink" title="3.2 Create a program for the PROD1 database called EMP_IND_REBUILD that rebuilds all indexes on the HR.EMPLOYEES table."></a>3.2 Create a program for the PROD1 database called EMP_IND_REBUILD that rebuilds all indexes on the HR.EMPLOYEES table.</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">BEGIN</div><div class="line">  FOR i IN (SELECT TABLE_OWNER,INDEX_NAME from user_indexes where TABLE_NAME=&apos;EMPLOYEES&apos;)</div><div class="line">LOOP</div><div class="line">  EXECUTE IMMEDIATE &quot;ALTER INDEX&quot;||i.TABLE_OWNER||&quot;.&quot;||i.INDEX.NAME||&quot;REBUILD&quot;;</div><div class="line">END LOOP;</div><div class="line">END;</div></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-13/46240593.jpg" alt="3-2-1" title="">
+                </div>
+                <div class="image-caption">3-2-1</div>
+            </figure>
+<h4 id="3-3-Create-a-window-that-utilizes-the-DAILYREBUILD-schedule-and-SYSTEM-PLAN-resource-manager-plan"><a href="#3-3-Create-a-window-that-utilizes-the-DAILYREBUILD-schedule-and-SYSTEM-PLAN-resource-manager-plan" class="headerlink" title="3.3 Create a window that utilizes the DAILYREBUILD schedule and SYSTEM_PLAN resource manager plan."></a>3.3 Create a window that utilizes the DAILYREBUILD schedule and SYSTEM_PLAN resource manager plan.</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">系统中无 SYSTEM_PLAN,可重新创建一个，或任选一个已有计划</div></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-13/36179326.jpg" alt="3-3-1" title="">
+                </div>
+                <div class="image-caption">3-3-1</div>
+            </figure>
+<h4 id="3-4-Create-a-job-called-REBUILD-JOB-that-uses-the-DAILYREBUILD-schedule-and-EMP-IND-REBUILD-program"><a href="#3-4-Create-a-job-called-REBUILD-JOB-that-uses-the-DAILYREBUILD-schedule-and-EMP-IND-REBUILD-program" class="headerlink" title="3.4 Create a job called REBUILD_JOB that uses the DAILYREBUILD schedule and EMP_IND_REBUILD program."></a>3.4 Create a job called REBUILD_JOB that uses the DAILYREBUILD schedule and EMP_IND_REBUILD program.</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-13/79779796.jpg" alt="3-4-1" title="">
+                </div>
+                <div class="image-caption">3-4-1</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-13/84218678.jpg" alt="3-4-2" title="">
+                </div>
+                <div class="image-caption">3-4-2</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-13/27646018.jpg" alt="3-4-3" title="">
+                </div>
+                <div class="image-caption">3-4-3</div>
+            </figure>]]></content>
+    
+    <summary type="html">
+    
+      ocm11g认证考试
+    
+    </summary>
+    
+      <category term="学习笔记" scheme="https://aliennever.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="oracle" scheme="https://aliennever.github.io/tags/oracle/"/>
+    
+  </entry>
   
   <entry>
     <title>11gOCM-Skillset5</title>
