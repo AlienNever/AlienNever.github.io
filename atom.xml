@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://aliennever.github.io/"/>
-  <updated>2018-11-17T13:02:29.074Z</updated>
+  <updated>2018-11-18T12:55:24.550Z</updated>
   <id>https://aliennever.github.io/</id>
   
   <author>
@@ -14,6 +14,697 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>11gOCM-Skillset9</title>
+    <link href="https://aliennever.github.io/2018/11/18/20181118OCM%20Skillset9/"/>
+    <id>https://aliennever.github.io/2018/11/18/20181118OCM Skillset9/</id>
+    <published>2018-11-18T06:00:00.000Z</published>
+    <updated>2018-11-18T12:55:24.550Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Skillset-9"><a href="#Skillset-9" class="headerlink" title="Skillset 9"></a>Skillset 9</h1><h2 id="TASKS"><a href="#TASKS" class="headerlink" title="TASKS:"></a>TASKS:</h2><h3 id="1-Install-RAC"><a href="#1-Install-RAC" class="headerlink" title="1. Install RAC"></a><strong>1. Install RAC</strong></h3><h4 id="1-1-Install-RAC-known-as-RACDB-the-installation-media-is-placed-in-the-stage-database-directory"><a href="#1-1-Install-RAC-known-as-RACDB-the-installation-media-is-placed-in-the-stage-database-directory" class="headerlink" title="1.1. Install RAC, known as RACDB, the installation media is placed in the /stage/database directory"></a>1.1. Install RAC, known as RACDB, the installation media is placed in the /stage/database directory</h4><p>ORACLE_BASE=/u01/app/oracle<br>ORACLE_HOME=/u01/app/oracle/product/11.2.0/dbhome_1<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">host01:</div><div class="line">vi .bash_profile</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">export ORACLE_BASE=/u01/app/oracle</div><div class="line">export ORACLE_HOME=/u01app/oracle/product/11.2.0/dbhome_1</div><div class="line">export ORACLE_SID=RACDB1</div><div class="line">PATH=$ORACLE_HOME/bin:$PATH</div><div class="line">export PATH</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">source .bash_profile</div><div class="line">scp .bash_profile host02:~</div><div class="line">su root</div><div class="line">chown oracle:oinstall /u01/app/oracle/</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">host02:</div><div class="line">source .bash_profile</div><div class="line">su root</div><div class="line">chown oracle:oinstall /u01/app/oracle/</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">host01:</div><div class="line">unzip p10404530_112030_LINUX_1of7.zip</div><div class="line">unzip p10404530_112030_LINUX_2of7.zip</div><div class="line">cd database/</div><div class="line">./runInstaller</div></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/49477684.jpg" alt="1" title="">
+                </div>
+                <div class="image-caption">1</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/63754338.jpg" alt="2" title="">
+                </div>
+                <div class="image-caption">2</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/71486387.jpg" alt="3" title="">
+                </div>
+                <div class="image-caption">3</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/36699039.jpg" alt="4" title="">
+                </div>
+                <div class="image-caption">4</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/575255.jpg" alt="5" title="">
+                </div>
+                <div class="image-caption">5</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/71094201.jpg" alt="6" title="">
+                </div>
+                <div class="image-caption">6</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/58180237.jpg" alt="7" title="">
+                </div>
+                <div class="image-caption">7</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/95403880.jpg" alt="8" title="">
+                </div>
+                <div class="image-caption">8</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/61975858.jpg" alt="9" title="">
+                </div>
+                <div class="image-caption">9</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/79445436.jpg" alt="10" title="">
+                </div>
+                <div class="image-caption">10</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/14261976.jpg" alt="11" title="">
+                </div>
+                <div class="image-caption">11</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/83804524.jpg" alt="12" title="">
+                </div>
+                <div class="image-caption">12</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/91052758.jpg" alt="13" title="">
+                </div>
+                <div class="image-caption">13</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/72971752.jpg" alt="14" title="">
+                </div>
+                <div class="image-caption">14</div>
+            </figure>
+<h4 id="1-2-The-database-using-the-DATA-disk-group"><a href="#1-2-The-database-using-the-DATA-disk-group" class="headerlink" title="1.2. The database using the DATA disk group"></a>1.2. The database using the DATA disk group</h4><h4 id="1-3-Using-the-General-purpose-method-to-create-the-database-do-not-configure-EM"><a href="#1-3-Using-the-General-purpose-method-to-create-the-database-do-not-configure-EM" class="headerlink" title="1.3. Using the General purpose method to create the database, do not configure EM"></a>1.3. Using the General purpose method to create the database, do not configure EM</h4><h4 id="1-4-The-use-of-Policy-managed-mode-management-database-Service-pool-name-is-OCMPOOL"><a href="#1-4-The-use-of-Policy-managed-mode-management-database-Service-pool-name-is-OCMPOOL" class="headerlink" title="1.4. The use of Policy-managed mode management database, Service pool name is OCMPOOL"></a>1.4. The use of Policy-managed mode management database, Service pool name is OCMPOOL</h4><h4 id="1-5-Flashback-area-using-FRA-disk-group-size-4G"><a href="#1-5-Flashback-area-using-FRA-disk-group-size-4G" class="headerlink" title="1.5. Flashback area using FRA disk group, size: 4G"></a>1.5. Flashback area using FRA disk group, size: 4G</h4><h4 id="1-6-Memory-target-needs-to-be-set-to-800M"><a href="#1-6-Memory-target-needs-to-be-set-to-800M" class="headerlink" title="1.6. Memory target needs to be set to 800M"></a>1.6. Memory target needs to be set to 800M</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dbca</div></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/14588336.jpg" alt="1" title="">
+                </div>
+                <div class="image-caption">1</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/80677790.jpg" alt="2" title="">
+                </div>
+                <div class="image-caption">2</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/33426780.jpg" alt="3" title="">
+                </div>
+                <div class="image-caption">3</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/37812735.jpg" alt="4" title="">
+                </div>
+                <div class="image-caption">4</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/16461774.jpg" alt="5" title="">
+                </div>
+                <div class="image-caption">5</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/20762352.jpg" alt="6" title="">
+                </div>
+                <div class="image-caption">6</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/27018583.jpg" alt="7" title="">
+                </div>
+                <div class="image-caption">7</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/27018583.jpg" alt="8" title="">
+                </div>
+                <div class="image-caption">8</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/95953898.jpg" alt="9" title="">
+                </div>
+                <div class="image-caption">9</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/33806235.jpg" alt="10" title="">
+                </div>
+                <div class="image-caption">10</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/557350.jpg" alt="11" title="">
+                </div>
+                <div class="image-caption">11</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/75729027.jpg" alt="12" title="">
+                </div>
+                <div class="image-caption">12</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/21710099.jpg" alt="13" title="">
+                </div>
+                <div class="image-caption">13</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/33315317.jpg" alt="14" title="">
+                </div>
+                <div class="image-caption">14</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/64102706.jpg" alt="15" title="">
+                </div>
+                <div class="image-caption">15</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/64248347.jpg" alt="16" title="">
+                </div>
+                <div class="image-caption">16</div>
+            </figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">edbjr2p1:</div><div class="line">sqlplus sys/oracle@racdb as sysdba</div><div class="line">select instance_name from gv$instance;</div></pre></td></tr></table></figure>
+<h3 id="2-The-configuration-of-RAC"><a href="#2-The-configuration-of-RAC" class="headerlink" title="2. The configuration of RAC"></a><strong>2. The configuration of RAC</strong></h3><h4 id="2-1-Create-Sequence-requirements-according-to-sequence-generated-sequence-in-order-to-improve-the-performance-of-all-values-should-be-placed-in-memory-the-start-value-100-the-end-value-99999"><a href="#2-1-Create-Sequence-requirements-according-to-sequence-generated-sequence-in-order-to-improve-the-performance-of-all-values-should-be-placed-in-memory-the-start-value-100-the-end-value-99999" class="headerlink" title="2.1 Create Sequence, requirements according to sequence generated sequence, in order to improve the performance of all values should be placed in memory, the start value: 100, the end value: 99999"></a>2.1 Create Sequence, requirements according to sequence generated sequence, in order to improve the performance of all values should be placed in memory, the start value: 100, the end value: 99999</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">create sequence rac_seq start with 100 maxvalue 99999 cache 50000;</div><div class="line">select * from dba_sequences where SEQUENCE_NAME=&apos;RAC_SEQ&apos;;</div></pre></td></tr></table></figure>
+<h4 id="2-2-Create-a-Service-ACNTPAY-Requirements-for-connection-to-OCMPOOL-each-time-using-only-one-instance"><a href="#2-2-Create-a-Service-ACNTPAY-Requirements-for-connection-to-OCMPOOL-each-time-using-only-one-instance" class="headerlink" title="2.2 Create a Service:ACNTPAY,Requirements for connection to OCMPOOL, each time using only one instance."></a>2.2 Create a Service:ACNTPAY,Requirements for connection to OCMPOOL, each time using only one instance.</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">srvctl add service -d RACDB -s ACNTPAY -g OCMPOOL -c SINGLETON</div></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/87488753.jpg" alt="1" title="">
+                </div>
+                <div class="image-caption">1</div>
+            </figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">srvctl start service -d RACDB -s acntpay</div></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/23759884.jpg" alt="2" title="">
+                </div>
+                <div class="image-caption">2</div>
+            </figure>]]></content>
+    
+    <summary type="html">
+    
+      ocm11g认证考试
+    
+    </summary>
+    
+      <category term="学习笔记" scheme="https://aliennever.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="oracle" scheme="https://aliennever.github.io/tags/oracle/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>11gOCM-Skillset8</title>
+    <link href="https://aliennever.github.io/2018/11/18/20181118OCM%20Skillset8/"/>
+    <id>https://aliennever.github.io/2018/11/18/20181118OCM Skillset8/</id>
+    <published>2018-11-18T05:00:00.000Z</published>
+    <updated>2018-11-18T12:55:10.865Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Skillset-8"><a href="#Skillset-8" class="headerlink" title="Skillset 8"></a>Skillset 8</h1><h2 id="TASKS"><a href="#TASKS" class="headerlink" title="TASKS:"></a>TASKS:</h2><h3 id="1-Installation-of-Grid-Infrastructure"><a href="#1-Installation-of-Grid-Infrastructure" class="headerlink" title="1. Installation of Grid Infrastructure"></a><strong>1. Installation of Grid Infrastructure</strong></h3><h4 id="1-1-The-installation-media-of-GI-is-placed-in-the-directory-of-stage-grid"><a href="#1-1-The-installation-media-of-GI-is-placed-in-the-directory-of-stage-grid" class="headerlink" title="1.1 The installation media of GI is placed in the directory of /stage/grid :"></a>1.1 The installation media of GI is placed in the directory of /stage/grid :</h4><p>ORACLE_BASE=/u01/app/grid<br>ORACLE_HOME=/u01/app/11.2.0/grid<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">host01:</div><div class="line">vi .bash_profile</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">PATH=$PATH:$HOME/bin</div><div class="line">export ORACLE_BASE=/u01/app/grid</div><div class="line">export ORACLE_HOME=/u01/app/11.2.0/grid</div><div class="line">PATH=$ORACLE_HOME/bin:$PATH</div><div class="line">export PATH</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">source .bash_profile</div><div class="line">scp .bash_profile host02:~</div><div class="line">cd /stage/grid/</div><div class="line">unzip p10404530_112030_LINUX_3of7.zip </div><div class="line">./runInstaller</div></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/88965286.jpg" alt="1" title="">
+                </div>
+                <div class="image-caption">1</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/85090122.jpg" alt="2" title="">
+                </div>
+                <div class="image-caption">2</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/77214130.jpg" alt="3" title="">
+                </div>
+                <div class="image-caption">3</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/83093067.jpg" alt="4" title="">
+                </div>
+                <div class="image-caption">4</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/86246880.jpg" alt="5" title="">
+                </div>
+                <div class="image-caption">5</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/2475727.jpg" alt="6" title="">
+                </div>
+                <div class="image-caption">6</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/11796563.jpg" alt="7" title="">
+                </div>
+                <div class="image-caption">7</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/78585823.jpg" alt="8" title="">
+                </div>
+                <div class="image-caption">8</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/41955720.jpg" alt="9" title="">
+                </div>
+                <div class="image-caption">9</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/70309762.jpg" alt="10" title="">
+                </div>
+                <div class="image-caption">10</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/41030907.jpg" alt="11" title="">
+                </div>
+                <div class="image-caption">11</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/18809896.jpg" alt="12" title="">
+                </div>
+                <div class="image-caption">12</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/3613047.jpg" alt="13" title="">
+                </div>
+                <div class="image-caption">13</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/19447959.jpg" alt="14" title="">
+                </div>
+                <div class="image-caption">14</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/76492397.jpg" alt="15" title="">
+                </div>
+                <div class="image-caption">15</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/9105573.jpg" alt="16" title="">
+                </div>
+                <div class="image-caption">16</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/37953754.jpg" alt="17" title="">
+                </div>
+                <div class="image-caption">17</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/24319563.jpg" alt="18" title="">
+                </div>
+                <div class="image-caption">18</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/55406045.jpg" alt="19" title="">
+                </div>
+                <div class="image-caption">19</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/90217708.jpg" alt="20" title="">
+                </div>
+                <div class="image-caption">20</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/34153917.jpg" alt="21" title="">
+                </div>
+                <div class="image-caption">21</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/22236022.jpg" alt="22" title="">
+                </div>
+                <div class="image-caption">22</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/99886417.jpg" alt="23" title="">
+                </div>
+                <div class="image-caption">23</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/62903667.jpg" alt="24" title="">
+                </div>
+                <div class="image-caption">24</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/34761457.jpg" alt="25" title="">
+                </div>
+                <div class="image-caption">25</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/22702660.jpg" alt="26" title="">
+                </div>
+                <div class="image-caption">26</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/88754298.jpg" alt="27" title="">
+                </div>
+                <div class="image-caption">27</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/41277131.jpg" alt="28" title="">
+                </div>
+                <div class="image-caption">28</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/5013659.jpg" alt="29" title="">
+                </div>
+                <div class="image-caption">29</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/43741815.jpg" alt="30" title="">
+                </div>
+                <div class="image-caption">30</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/43870980.jpg" alt="31" title="">
+                </div>
+                <div class="image-caption">31</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/3540846.jpg" alt="32" title="">
+                </div>
+                <div class="image-caption">32</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/55274314.jpg" alt="33" title="">
+                </div>
+                <div class="image-caption">33</div>
+            </figure>
+<h4 id="1-2-Create-a-disk-group-DATA-use-the-normal-mode-used-for-OCR-and-VOTE"><a href="#1-2-Create-a-disk-group-DATA-use-the-normal-mode-used-for-OCR-and-VOTE" class="headerlink" title="1.2 Create a disk group DATA,use the normal mode,used for OCR and VOTE"></a>1.2 Create a disk group DATA,use the normal mode,used for OCR and VOTE</h4><p>ASMDISK1<br>ASMDISK2<br>ASMDISK3<br>ASMDISK4<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/24968835.jpg" alt="1" title="">
+                </div>
+                <div class="image-caption">1</div>
+            </figure></p>
+<h4 id="1-3-Create-a-disk-group-FRA-use-the-external-method-is-used-to-store-the-flashback-data"><a href="#1-3-Create-a-disk-group-FRA-use-the-external-method-is-used-to-store-the-flashback-data" class="headerlink" title="1.3 Create a disk group FRA, use the external method, is used to store the flashback data."></a>1.3 Create a disk group FRA, use the external method, is used to store the flashback data.</h4><p>ASMDISK5<br>ASMDISK6<br>ASMDISK7<br>ASMDISK8<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">asmca</div></pre></td></tr></table></figure></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/90335421.jpg" alt="1" title="">
+                </div>
+                <div class="image-caption">1</div>
+            </figure>
+<h4 id="1-4-Create-a-ACFS-disk-group-use-the-external-mode-volume-name-ADM-not-sure"><a href="#1-4-Create-a-ACFS-disk-group-use-the-external-mode-volume-name-ADM-not-sure" class="headerlink" title="1.4 Create a ACFS disk group, use the external mode, volume name:ADM (not sure)"></a>1.4 Create a ACFS disk group, use the external mode, volume name:ADM (not sure)</h4><p>ASMDISK9<br>ASMDISK10<br>ASMDISK11<br>ASMDISK12<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/71984467.jpg" alt="1" title="">
+                </div>
+                <div class="image-caption">1</div>
+            </figure><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/97881406.jpg" alt="2" title="">
+                </div>
+                <div class="image-caption">2</div>
+            </figure></p>
+<h4 id="1-5-Create-the-ACFS-file-system-volume-name-is-db-file-the-size-of-2G-used-for-ACFS-Mount-point-is-u01-app-oracle-acfs-not-sure"><a href="#1-5-Create-the-ACFS-file-system-volume-name-is-db-file-the-size-of-2G-used-for-ACFS-Mount-point-is-u01-app-oracle-acfs-not-sure" class="headerlink" title="1.5 Create the ACFS file system,volume name is db_file, the size of 2G, used for ACFS. Mount point is /u01/app/oracle/acfs(not sure)"></a>1.5 Create the ACFS file system,volume name is db_file, the size of 2G, used for ACFS. Mount point is /u01/app/oracle/acfs(not sure)</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/57245955.jpg" alt="1" title="">
+                </div>
+                <div class="image-caption">1</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/82193809.jpg" alt="2" title="">
+                </div>
+                <div class="image-caption">2</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/25827575.jpg" alt="3" title="">
+                </div>
+                <div class="image-caption">3</div>
+            </figure>
+<h3 id="2-Manage-Grid-Infrastructure"><a href="#2-Manage-Grid-Infrastructure" class="headerlink" title="2. Manage Grid Infrastructure"></a><strong>2. Manage Grid Infrastructure</strong></h3><h5 id="2-1-FOR-OCR-MIRROR-use-the-FRA-disk-group"><a href="#2-1-FOR-OCR-MIRROR-use-the-FRA-disk-group" class="headerlink" title="2.1 FOR OCR MIRROR, use the FRA disk group"></a>2.1 FOR OCR MIRROR, use the FRA disk group</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">cd /u01/app/11.2.0/grid/bin/</div><div class="line">./ocrcheck</div><div class="line">./ocrconfig -add +FRA</div><div class="line">./ocrcheck</div></pre></td></tr></table></figure>
+<h5 id="2-2-Copy-the-db-images-zip-file-to-the-ACFS-file-in-the-home-oracle-directory"><a href="#2-2-Copy-the-db-images-zip-file-to-the-ACFS-file-in-the-home-oracle-directory" class="headerlink" title="2.2 Copy the db_images.zip file to the ACFS,file in the /home/oracle directory"></a>2.2 Copy the db_images.zip file to the ACFS,file in the /home/oracle directory</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">没有db_images.zip文件，在etc下随便找一个文件拷过去</div><div class="line">cp /etc/conman.conf /u01/app/oracle/acfs/</div><div class="line">ll /u01/app/oracle/acfs/</div></pre></td></tr></table></figure>
+<h5 id="2-3-ACFS-snapshot-the-name-of-the-ACFS-SNAP1-on-the-ACFS-file-system"><a href="#2-3-ACFS-snapshot-the-name-of-the-ACFS-SNAP1-on-the-ACFS-file-system" class="headerlink" title="2.3 ACFS snapshot, the name of the ACFS_SNAP1, on the ACFS file system."></a>2.3 ACFS snapshot, the name of the ACFS_SNAP1, on the ACFS file system.</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/sbin/acfsutil snap create ACFS_SNAP1 /u01/app/oracle/acfs</div><div class="line">/sbin/acfsutil snap info /u01/app/oracle/acfs</div></pre></td></tr></table></figure>
+<h5 id="2-4-TO-do-OLR-dump-known-as-MYOLR-on-the-home-oracle"><a href="#2-4-TO-do-OLR-dump-known-as-MYOLR-on-the-home-oracle" class="headerlink" title="2.4 TO do OLR dump, known as MYOLR, on the /home/oracle"></a>2.4 TO do OLR dump, known as MYOLR, on the /home/oracle</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd /home/oracle</div><div class="line">/u01/app/11.2.0/grid/bin/ocrdump myolr</div></pre></td></tr></table></figure>
+<h5 id="2-5-Turn-off-the-automatic-start-function-of-GI"><a href="#2-5-Turn-off-the-automatic-start-function-of-GI" class="headerlink" title="2.5 Turn off the automatic start function of GI."></a>2.5 Turn off the automatic start function of GI.</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">/u01/app/11.2.0/grid/bin/crsctl disable</div><div class="line">/u01/app/11.2.0/grid/bin/crsctl disable crs</div><div class="line">host2:</div><div class="line">/u01/app/11.2.0/grid/bin/crsctl disable crs</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      ocm11g认证考试
+    
+    </summary>
+    
+      <category term="学习笔记" scheme="https://aliennever.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="oracle" scheme="https://aliennever.github.io/tags/oracle/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>11gOCM-Skillset7</title>
+    <link href="https://aliennever.github.io/2018/11/18/20181118OCM%20Skillset7/"/>
+    <id>https://aliennever.github.io/2018/11/18/20181118OCM Skillset7/</id>
+    <published>2018-11-18T04:00:00.000Z</published>
+    <updated>2018-11-18T12:18:58.736Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Skillset-7"><a href="#Skillset-7" class="headerlink" title="Skillset 7"></a>Skillset 7</h1><h2 id="TASKS"><a href="#TASKS" class="headerlink" title="TASKS:"></a>TASKS:</h2><h3 id="1-Create-Physical-Standby-Database"><a href="#1-Create-Physical-Standby-Database" class="headerlink" title="1. Create Physical Standby Database."></a>1. <strong>Create Physical Standby Database.</strong></h3><h4 id="1-1-Primary-Database-is-PROD1-Standby-Database-is-SBDB1-The-Standby-database-to-be-created-in-Management-Server"><a href="#1-1-Primary-Database-is-PROD1-Standby-Database-is-SBDB1-The-Standby-database-to-be-created-in-Management-Server" class="headerlink" title="1.1 Primary Database is PROD1,Standby Database is SBDB1;The Standby database to be created in Management Server"></a>1.1 Primary Database is PROD1,Standby Database is SBDB1;The Standby database to be created in Management Server</h4><h4 id="1-2-Standby-database-data-and-log-files-should-be-placed-in-the-directory-that-u01-app-oracle-oradata-SBDB1"><a href="#1-2-Standby-database-data-and-log-files-should-be-placed-in-the-directory-that-u01-app-oracle-oradata-SBDB1" class="headerlink" title="1.2 Standby database data and log files should be placed in the directory that /u01/app/oracle/oradata/SBDB1."></a>1.2 Standby database data and log files should be placed in the directory that /u01/app/oracle/oradata/SBDB1.</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/97430037.jpg" alt="1" title="">
+                </div>
+                <div class="image-caption">1</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/14176094.jpg" alt="2" title="">
+                </div>
+                <div class="image-caption">2</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/71364138.jpg" alt="3" title="">
+                </div>
+                <div class="image-caption">3</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/3798536.jpg" alt="4" title="">
+                </div>
+                <div class="image-caption">4</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/95388191.jpg" alt="5" title="">
+                </div>
+                <div class="image-caption">5</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/75999880.jpg" alt="6" title="">
+                </div>
+                <div class="image-caption">6</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/46177867.jpg" alt="7" title="">
+                </div>
+                <div class="image-caption">7</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/37570606.jpg" alt="8" title="">
+                </div>
+                <div class="image-caption">8</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/55173689.jpg" alt="9" title="">
+                </div>
+                <div class="image-caption">9</div>
+            </figure>
+<h3 id="2-Management-Physical-Standby-Database"><a href="#2-Management-Physical-Standby-Database" class="headerlink" title="2. Management Physical Standby Database."></a>2. <strong>Management Physical Standby Database.</strong></h3><h4 id="2-1-The-standby-database-is-in-the-open-state-execute-the-script-vdedu1-home-oracle-scripts-sbdb1-sql"><a href="#2-1-The-standby-database-is-in-the-open-state-execute-the-script-vdedu1-home-oracle-scripts-sbdb1-sql" class="headerlink" title="2.1 The standby database is in the open state, execute the script(vdedu1:/home/oracle/scripts/sbdb1.sql)."></a>2.1 The standby database is in the open state, execute the script(vdedu1:/home/oracle/scripts/sbdb1.sql).</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ALTER DATABASE RECOVER MANAGED STANDBY DATABASE CANCEL;</div><div class="line">ALTER DATABASE CONVERT  TO SNAPSHOT STANDBY;</div><div class="line">select open_mode from v$database;</div><div class="line">@/home/oracle/sbdb1.sql</div></pre></td></tr></table></figure>
+<h3 id="3-Restore-Physical-Standby-Database"><a href="#3-Restore-Physical-Standby-Database" class="headerlink" title="3.Restore Physical Standby Database"></a>3.<strong>Restore Physical Standby Database</strong></h3><h4 id="3-1-Into-standby-database-state-from-the-open-state"><a href="#3-1-Into-standby-database-state-from-the-open-state" class="headerlink" title="3.1 Into standby database state from the open state"></a>3.1 Into standby database state from the open state</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">shut immediate</div><div class="line">startup mount</div><div class="line">ALTER DATABASE CONVERT TO PHYSICAL STANDBY;</div><div class="line">select STATUS from v$instance;</div></pre></td></tr></table></figure>
+<h4 id="3-2-Let-the-standby-database-synchronization-can-be-maintained-timely-with-Primary-database"><a href="#3-2-Let-the-standby-database-synchronization-can-be-maintained-timely-with-Primary-database" class="headerlink" title="3.2 Let the standby database synchronization can be maintained timely with Primary database."></a>3.2 Let the standby database synchronization can be maintained timely with Primary database.</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">shut immediate</div><div class="line">startup mount</div><div class="line">ALTER DATABASE RECOVER MANAGED STANDBY DATABASE USING CURRENT LOGFILE DISCONNECT FROM SESSION;</div><div class="line">alter database open;</div><div class="line">select open_mode from v$database;</div><div class="line">select THREAD#,SEQUENCE#,APPLIED from v$archived_log;</div></pre></td></tr></table></figure>
+<h4 id="3-3-Let-the-Primary-database-can-quickly-complete-the-recovery-process-opening-the-block-change-tracking"><a href="#3-3-Let-the-Primary-database-can-quickly-complete-the-recovery-process-opening-the-block-change-tracking" class="headerlink" title="3.3 Let the Primary database can quickly complete the recovery process (opening the block change tracking)"></a>3.3 Let the Primary database can quickly complete the recovery process (opening the block change tracking)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alter database enable block change tracking using file &apos;/u01/app/oracle/oradata/SBDB1/s_bcf.f&apos;;</div></pre></td></tr></table></figure>
+<h4 id="3-4-Archive-log-of-Primary-database-not-in-preparing-a-database-application-cannot-be-deleted-the-primary-database’s-archive-log-transfer-all-standby-database-then-delete"><a href="#3-4-Archive-log-of-Primary-database-not-in-preparing-a-database-application-cannot-be-deleted-the-primary-database’s-archive-log-transfer-all-standby-database-then-delete" class="headerlink" title="3.4 Archive log of Primary database not in preparing a database application cannot be deleted. (the primary database’s archive log transfer all standby database, then delete)"></a>3.4 Archive log of Primary database not in preparing a database application cannot be deleted. (the primary database’s archive log transfer all standby database, then delete)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">export ORACLE_SID=PROD1</div><div class="line">rman target /</div><div class="line">show all</div><div class="line">CONFIGURE ARCHIVELOG DELETION POLICY TO APPLIED ON ALL STANDBY;</div></pre></td></tr></table></figure>
+<h3 id="4-Configure-Physical-standby-Database"><a href="#4-Configure-Physical-standby-Database" class="headerlink" title="4.Configure Physical standby Database"></a>4.<strong>Configure Physical standby Database</strong></h3><h4 id="4-1-Create-the-Service-known-as-SBDB1SRV-when-EMREP-is-used-as-a-standby-database-this-service-can-be-started-automatically"><a href="#4-1-Create-the-Service-known-as-SBDB1SRV-when-EMREP-is-used-as-a-standby-database-this-service-can-be-started-automatically" class="headerlink" title="4.1 Create the Service, known as SBDB1SRV, when EMREP is used as a standby database, this service can be started automatically."></a>4.1 Create the Service, known as SBDB1SRV, when EMREP is used as a standby database, this service can be started automatically.</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">./srvctl add database -d EMREP -o $ORACLE_HOME</div><div class="line">./srvctl add service -s SBDB1SRV -d EMREP -l physical_standby -y AUTOMATIC</div><div class="line">./crs_stat -t</div></pre></td></tr></table></figure>
+<h4 id="4-2-Increasing-the-PRODSRV-local-Service-in-the-Database-Server-so-that-when-the-primary-database-is-broken-can-Failover-to-prepare-for-Standby-database"><a href="#4-2-Increasing-the-PRODSRV-local-Service-in-the-Database-Server-so-that-when-the-primary-database-is-broken-can-Failover-to-prepare-for-Standby-database" class="headerlink" title="4.2 Increasing the PRODSRV local Service in the Database Server, so that when the primary database is broken, can Failover to prepare for Standby database."></a>4.2 Increasing the PRODSRV local Service in the Database Server, so that when the primary database is broken, can Failover to prepare for Standby database.</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">./srvctl add database -d SBDB1 -o $ORACLE_HOME</div><div class="line">./srvctl add service -d SBDB1 -s PRODSRV -l primary</div><div class="line">[oracle@edbjr2p1 admin]$ vi $ORACLE_HOME/network/admin/tnsnames.ora</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">PRODSRV =</div><div class="line">  (DESCRIPTION =</div><div class="line">    (ADDRESS_LIST =</div><div class="line">      (ADDRESS = (PROTOCOL = TCP)(HOST = edbjr2p1.example.com)(PORT = 1521))</div><div class="line">      (ADDRESS = (PROTOCOL = TCP)(HOST = edbjr2p2.example.com)(PORT = 1521))</div><div class="line">      (LOAD_BALANCE=off) </div><div class="line">      (FAILOVER=on) </div><div class="line">    )</div><div class="line">    (CONNECT_DATA =</div><div class="line">       (SERVICE_NAME = PROD1.us.oracle.com)</div><div class="line">    )</div><div class="line">  )</div></pre></td></tr></table></figure>
+<h3 id="5-Configure-the-Observer-and-connect-time-failover-Configuration-Fast-start-Failover"><a href="#5-Configure-the-Observer-and-connect-time-failover-Configuration-Fast-start-Failover" class="headerlink" title="5. Configure the Observer and connect time failover (Configuration Fast-start Failover)"></a>5. <strong>Configure the Observer and connect time failover (Configuration Fast-start Failover)</strong></h3><h4 id="5-1-Configure-Protection-Mode-gt"><a href="#5-1-Configure-Protection-Mode-gt" class="headerlink" title="5.1. Configure Protection Mode: -&gt;"></a>5.1. Configure Protection Mode: -&gt;</h4><h4 id="5-2-Configure-the-Observer-and-connect-time-failover"><a href="#5-2-Configure-the-Observer-and-connect-time-failover" class="headerlink" title="5.2. Configure the Observer and connect time failover:"></a>5.2. Configure the Observer and connect time failover:</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/45061385.jpg" alt="1" title="">
+                </div>
+                <div class="image-caption">1</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/1291032.jpg" alt="2" title="">
+                </div>
+                <div class="image-caption">2</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/84518304.jpg" alt="3" title="">
+                </div>
+                <div class="image-caption">3</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/47600948.jpg" alt="4" title="">
+                </div>
+                <div class="image-caption">4</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://phef16524.bkt.clouddn.com//18-11-18/13651901.jpg" alt="5" title="">
+                </div>
+                <div class="image-caption">5</div>
+            </figure>]]></content>
+    
+    <summary type="html">
+    
+      ocm11g认证考试
+    
+    </summary>
+    
+      <category term="学习笔记" scheme="https://aliennever.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="oracle" scheme="https://aliennever.github.io/tags/oracle/"/>
+    
+  </entry>
   
   <entry>
     <title>11gOCM-Skillset6</title>
